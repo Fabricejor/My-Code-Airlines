@@ -10,7 +10,7 @@ const userSchema = new mongoose.Schema({
   tel: { type:String, required: true},
   mdp: { type: String, required: true },
   numPassport: { type: String, required: true },
-  age:{type:Number, required: true},
+  age:{type:Number, required: true ,default:18},
   role:{type:Number, default:0},
   userData:{type:Date,required:true, default: Date.now() }
 },
