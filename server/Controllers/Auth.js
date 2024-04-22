@@ -24,7 +24,7 @@ module.exports.signUP = async (req, res) => {
         }
         // crypt password
         const salt = await bcrypt.genSalt(10);
-        const cryptPassword = await bcrypt.hash(password, salt);
+        const cryptPassword = await bcrypt.hash(mdp, salt);
 
         // A new user created!!!
         const user = await User.create({
@@ -32,13 +32,14 @@ module.exports.signUP = async (req, res) => {
             email,
             tel,
             mdp: cryptPassword,
+            numPassport,
             age,
             role : 0  //0 is the default value for the user , and 1 is the value for admins
         });
 
         return res.status(201).json({ message: " successfully creation User  ...", user });
     } catch (error) {
-        res.status(500).send({ message: "Internal Server Error" , error});
+        res.status(500).send({ message: "Internal Server Error "+console.log(error), error});
     }
 }
 
@@ -61,7 +62,7 @@ module.exports.signIn = async (req, res) => {
     } catch (error) {
         console.log(error);
 
-        res.status(500).send({ message: "Internal Server Error" , error});
+        res.status(500).send({ message: "Internal Server Error" +console.log(error) , error});
     }
 }
 
