@@ -8,6 +8,8 @@ const TicketSchema = new mongoose.Schema({
   prix: { type: Number, required: true },
   destination: { type: String, required: true },
   promotion: { type: String, }
+  // : { type: mongoose.Schema.Types.ObjectId, ref: '', required: true },
+
 },   {timestamps:true}
 );
 

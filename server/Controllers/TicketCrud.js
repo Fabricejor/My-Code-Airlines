@@ -1,57 +1,57 @@
-const Flight = require('../Models/FlightSchema');
+const Ticket = require('../Models/TicketSchema');
 const express = require('express');
 
 //tous les vols
-module.exports.getFlight = async (req, res, next) => {
+module.exports.getTicket = async (req, res, next) => {
     try {
-        const flight = await Flight.find();
-        res.status(200).json(flight);//afficher sous format json le resultat
+        const ticket = await Ticket.find();
+        res.status(200).json(ticket);//afficher sous format json le resultat
        } catch (error) {
         res.status(500).json({message: error.message })
        }
 }
 
 //un seul vols
-module.exports.oneFlight = async (req,res )=>{
+module.exports.oneTicket = async (req,res )=>{
     try {
         const id = req.params.id; // Récupérer l'ID à partir des paramètres de l'URL
 
-        const flight = await Flight.findById(id);
+        const ticket = await Ticket.findById(id);
     
         // Si aucun utilisateur avec cet ID n'est trouvé, renvoyer une erreur 404
-        if (!flight) {
+        if (!ticket) {
           return res.status(404).json({ message: "pas de vols trouvés" });
         }
     
         // Renvoyer les données de l'utilisateur trouvé
-        res.json(flight);
+        res.json(ticket);
        } catch (error) {
         // Si une erreur se produit, renvoyer un statut 400 (Bad Request) avec le message d'erreur
         res.status(400).json({ message: error.message });
        }
 }
 //poster un  vols
-module.exports.addFlight = async (req,res) =>{
+module.exports.addTicket = async (req,res) =>{
     try {
         //destructuration pour eviter une repetition
-        const { compagnie,
-            airport_start,
-            airport_end,
-            date_depart,
-            date_arrivee,
-            distance,
-            dure } = req.body;
+        const { 
+            numTicket,
+            type,
+            classe,
+            prix,
+            destination,
+            promotion
+            } = req.body;
 
-        const newFly = new Flight({
-            compagnie,
-            airport_start,
-            airport_end,
-            date_depart,
-            date_arrivee,
-            distance,
-            dure
+        const newTicket = new Ticket({
+            numTicket,
+            type,
+            classe,
+            prix,
+            destination,
+            promotion
         })
-        const savedFly = await newFly.save();
+        const savedFly = await newTicket.save();
         res.status(201).json(savedFly);
     } catch (error) {
     console.log(error);    
@@ -59,16 +59,16 @@ module.exports.addFlight = async (req,res) =>{
         
     }
 }
-module.exports.deleteFlight = async (req ,res ) => {
+module.exports.deleteTicket = async (req ,res ) => {
     try {
         const id = req.params.id; // Récupérer l'ID à partir des paramètres de l'URL
     
         
-        const deletedFly = await Flight.findByIdAndDelete(id);
-        if (!deletedFly) {
+        const deletedTicket = await Ticket.findByIdAndDelete(id);
+        if (!deletedTicket) {
           return res.status(404).json({ message: "erreur ce vols n'existe pas" });
         }
-        res.json(deletedFly);
+        res.json(deletedTicket);
        } catch (error) {
         res.status(400).json({ message: error.message });
        }
