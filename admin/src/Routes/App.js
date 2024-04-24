@@ -1,7 +1,7 @@
-import {createBrowserRouter} from "react-router-dom"
-import ProtectedRoute from "../Services/ProtectedRoute"
+import {createBrowserRouter} from "react-router-dom";
+import Home from "../Pages/Home";
+import ProtectedRoute from "../Services/ProtectedRoute";
 import SignIn from "../Components/Connection/SignIn";
-import Home from "../Pages/Home"
 
 
 const token = localStorage.getItem("token");
