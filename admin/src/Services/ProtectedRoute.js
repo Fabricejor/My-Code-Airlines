@@ -1,13 +1,13 @@
 import { Navigate } from "react-router-dom";
 
-const ProtectedRoute = ({isAuthenticated , Children})=>{
+const ProtectedRoute = ({isAuthenticated , children})=>{
 
     if (!isAuthenticated){
         return <Navigate to="/" />
     }
     return (
         <>
-        {Children}
+        {children}
         </>
     )
 }

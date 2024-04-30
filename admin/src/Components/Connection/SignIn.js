@@ -50,7 +50,7 @@ const SignIn = () => {
                     // const expiresIn = 86400; // 1 jour en secondes
                     // const expirationTime = new Date().getTime() + expiresIn * 1000;
                     // localStorage.setItem("tokenExpiration", expirationTime);
-                    window.location = "/home";
+                    window.location = "/home/";
                 }
             } else {
                 setError("Réponse invalide du serveur");
@@ -94,14 +94,6 @@ const SignIn = () => {
                     </button>
                 </form>
 
-                <div className='container-right-signin'>
-                    <div className='card-title-signup sign-in'>
-                        <p id='new-user'>Vous N’avez pas de compte ? </p>
-                        <Link className='btn-form-connection' to='/signup'>
-                            Inscrivez-vous
-                        </Link>
-                    </div>
-                </div>
             </div>
             <div>
                 {error && <h1 style={{ color: 'red' }}>{error.response.data.message}</h1>}

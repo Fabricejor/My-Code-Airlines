@@ -5,8 +5,8 @@ const validator = require('validator');
 const userSchema = new mongoose.Schema({
   nom: { type: String, required: true },
   email: { type: String, required: true , max:100 ,  
-    validate:{validator: validator.isEmail,message: '{VALUE} is not a valid email',isAsync: false}
-  },
+          validate:{validator: validator.isEmail,message: '{VALUE} is not a valid email',isAsync: false}
+          },
   tel: { type:String, required: true},
   mdp: { type: String, required: true },
   numPassport: { type: String, required: true },
