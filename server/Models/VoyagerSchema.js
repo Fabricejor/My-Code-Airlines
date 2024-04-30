@@ -8,8 +8,8 @@ const voyagerSchema = new mongoose.Schema({
   numeroSiege: { type: String, required: true },
   age: { type: Number, required: true },
   dateNaissance: { type: Date, required: true },
-  id_user: { type: mongoose.Schema.Types.ObjectId, ref: 'user', required: true },
-  flight_id: { type: mongoose.Schema.Types.ObjectId, ref: 'flight', required: true },
+  // id_user: { type: mongoose.Schema.Types.ObjectId, ref: 'user', required: true },
+  // flight_id: { type: mongoose.Schema.Types.ObjectId, ref: 'flight', required: true },
   // ticket: { type: mongoose.Schema.Types.ObjectId, ref: 'Ticket', required: true },
 });
 

@@ -35,6 +35,9 @@ module.exports.addTicket = async (req,res) =>{
     try {
         //destructuration pour eviter une repetition
         const { 
+            id_user,
+            id_passager,
+            flight_id,
             numTicket,
             type,
             classe,
@@ -44,6 +47,9 @@ module.exports.addTicket = async (req,res) =>{
             } = req.body;
 
         const newTicket = new Ticket({
+            id_user,
+            id_passager,
+            flight_id,
             numTicket,
             type,
             classe,
