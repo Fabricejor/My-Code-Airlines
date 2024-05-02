@@ -11,7 +11,9 @@ module.exports = {
         "green-light":"#cdffea",
         "blue-light":"#cdf2ff",
         "blue-medium":"#80ddff",
-        "blue-dark":"#00a9e6"
+        "blue-dark":"#00a9e6",
+        "purple-dark":"#003C43",
+        "searchfield":"#135D66"
       }
     },
   },

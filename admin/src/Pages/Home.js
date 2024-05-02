@@ -7,13 +7,12 @@ function Home() {
         window.location = "/"
     }
     return (
-        <div>Home Admin
-            test
+        <>
             <Sidebar/>
             <button onClick={handleClose}>
                 deconnexion
             </button>
-        </div>
+        </>
     )
 }
 
