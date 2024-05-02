@@ -1,8 +1,9 @@
 import React, {useState} from "react";
 import "../Assets/Styles/sidebar.css";
 import { FaArrowsAltH,FaSearch  } from "react-icons/fa";
-import { MdConnectingAirports } from "react-icons/md";
+import { MdConnectingAirports ,MdOutlineArrowDropDown} from "react-icons/md";
 import { BiSolidDashboard } from "react-icons/bi";
+
 
 export default function Sidebar() {
   const [open,setOpen]=useState(true);// hooks pour connaitre letat du button qui va reduire le sidebar
@@ -50,10 +51,13 @@ export default function Sidebar() {
               return(
               <li key={index} className={` text-gray-400 text-sm flex items-center 
                 	                          gap-x-4 cursor-pointer p-2
-                                          hover:bg-searchfield rounded-md mt-2 justify-betweens
+                                          hover:bg-searchfield rounded-md 
                                             ${menu.spacing ? "mt-9" :"mt-2"}`}>
                 <span className="text-2xl block float-left" ><BiSolidDashboard/></span>
                 <span className={`text-base font-medium flex-1 duration-300 ${!open && "hidden"}`}>{menu.title}</span>
+                {menu.subMenu && {
+                  <MdOutlineArrowDropDown />
+                }}
               </li>)
             })}
           </ul>
