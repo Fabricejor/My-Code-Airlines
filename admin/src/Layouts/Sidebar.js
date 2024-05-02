@@ -2,13 +2,30 @@ import React, {useState} from "react";
 import "../Assets/Styles/sidebar.css";
 import { FaArrowsAltH,FaSearch  } from "react-icons/fa";
 import { MdConnectingAirports } from "react-icons/md";
+import { BiSolidDashboard } from "react-icons/bi";
 
 export default function Sidebar() {
   const [open,setOpen]=useState(true);// hooks pour connaitre letat du button qui va reduire le sidebar
+  const Menus =[
+    {title:"Admin"},
+    {title: "Vols"},
+    {title: "clients" ,spacing:true},
+    {title: "Graphiques",
+      subMenu:true,
+      subMenuItems:[
+        {title:"Graphiques 1"},
+        {title:"Graphiques 2"},
+        {title:"Graphiques 3"},
+      ]},
+      {title:"Voyagers"},
+      {title:"Reservation"},
+      {title:"log out"},
+  ];
+
   return (
     <>
       <div className="flex">
-        <div className={`bg-purple-dark h-screen p-5 pt-8 ${open ? "w-72":"w-20"} duration-300 relative`}>
+        <div className={`bg-purple-dark h-screen p-5 pt-8 ${open ? "w-72":"w-20"} duration-700 ease-out  relative`}>
           <FaArrowsAltH
             className={`bg-white text-purple-dark text-3xl 
                                       rounded-full absolute 
@@ -28,6 +45,18 @@ export default function Sidebar() {
           <input type={"search"} placeholder="search" 
             className={`text-base bg-transparent w-full text-white focus:outline-none ${open && "hidden"}`} />
           </div>
+          <ul className="pt-2">
+            {Menus.map((menu,index) => {
+              return(
+              <li key={index} className={` text-gray-400 text-sm flex items-center 
+                	                          gap-x-4 cursor-pointer p-2
+                                          hover:bg-searchfield rounded-md mt-2 justify-betweens
+                                            ${menu.spacing ? "mt-9" :"mt-2"}`}>
+                <span className="text-2xl block float-left" ><BiSolidDashboard/></span>
+                <span className={`text-base font-medium flex-1 duration-300 ${!open && "hidden"}`}>{menu.title}</span>
+              </li>)
+            })}
+          </ul>
         </div>
         <div className="p-7">
           {" "}
