@@ -1,29 +1,35 @@
 import React, { useState } from "react";
 import "../Assets/Styles/sidebar.css";
-import { FaArrowsAltH, FaSearch } from "react-icons/fa";
+import { FaArrowsAltH, FaSearch ,FaPowerOff ,FaRegBookmark} from "react-icons/fa";
 import { MdConnectingAirports, } from "react-icons/md";
 import { BiSolidDashboard } from "react-icons/bi";
 import { IoIosArrowDropdown } from "react-icons/io";
+import { GrUserAdmin } from "react-icons/gr";
+import { BsAirplaneEngines ,BsPersonVcard,BsGraphUpArrow } from "react-icons/bs";
+import { SiMicrosoftexcel,SiGoogleclassroom  } from "react-icons/si";
+import { VscGraph } from "react-icons/vsc";
+import { FaPersonCirclePlus } from "react-icons/fa6";
 
 export default function Sidebar() {
   const [open, setOpen] = useState(true);// hooks pour connaitre letat du button qui va reduire le sidebar
   const [submenuOpen, setSubmenuOpen] = useState(false);// hooks pour connaitre letat des sous menus
   const Menus = [
-    { title: "Admin" },
-    { title: "Vols" },
-    { title: "clients", spacing: true },
+    { title: "Admin" , icon: <GrUserAdmin />},
+    { title: "Vols" ,icon : <BsAirplaneEngines />},
+    { title: "clients",icon:<BsPersonVcard />, spacing: true },
     {
       title: "Graphiques",
+      icon:<SiMicrosoftexcel />,
       subMenu: true,
       subMenuItems: [
-        { title: "Graphiques 1" },
-        { title: "Graphiques 2" },
-        { title: "Graphiques 3" },
+        { title: "Graphiques 1" ,icon:<VscGraph />},
+        { title: "Graphiques 2",icon:<BsGraphUpArrow /> },
+        { title: "Graphiques 3" ,icon:<SiGoogleclassroom />},
       ]
     },
-    { title: "Voyagers" },
-    { title: "Reservation" },
-    { title: "log out" },
+    { title: "Voyagers" ,icon:<FaPersonCirclePlus />},
+    { title: "Reservation" ,icon:<FaRegBookmark/>},
+    { title: "log out",icon:<FaPowerOff /> },
   ];
 
   return (
@@ -56,11 +62,11 @@ export default function Sidebar() {
                 	                          gap-x-4 cursor-pointer p-2
                                           hover:bg-searchfield rounded-md 
                                             ${menu.spacing ? "mt-9" : "mt-2"}`}>
-                  <span className="text-2xl block float-left" ><BiSolidDashboard /></span>
+                  <span className="text-2xl block float-left" >{menu.icon ? menu.icon : <BiSolidDashboard />}</span>
                   <span className={`text-base font-medium flex-1 duration-300 ${!open && "hidden"}`}>{
                     menu.title}
                   </span>
-                  
+                  { !open && <span className="scale-0 hidden hover:block ">test</span>}
                   {menu.subMenu && (
                     <IoIosArrowDropdown className={`${submenuOpen && "rotate-180"}`} onClick={() => setSubmenuOpen(!submenuOpen) } />
                   )}</li>
@@ -71,6 +77,8 @@ export default function Sidebar() {
                           <li key={index} className={` text-gray-400 text-sm flex items-center 
                 	                          gap-x-4 cursor-pointer p-2 px-5
                                           hover:bg-searchfield rounded-md `}>
+                  <span className="text-2xl block float-left" >{subMenuItems.icon ? subMenuItems.icon : <BiSolidDashboard />}</span>
+
                             {subMenuItems.title}
                           </li>)
                       })}
