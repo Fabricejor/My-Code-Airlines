@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import "../Assets/Styles/sidebar.css";
+import { Link } from "react-router-dom";
+// import "../Assets/Styles/sidebar.css";
 import { FaArrowsAltH, FaSearch ,FaPowerOff ,FaRegBookmark} from "react-icons/fa";
 import { MdConnectingAirports, } from "react-icons/md";
 import { BiSolidDashboard } from "react-icons/bi";
@@ -11,6 +12,10 @@ import { VscGraph } from "react-icons/vsc";
 import { FaPersonCirclePlus } from "react-icons/fa6";
 
 export default function Sidebar() {
+  const handleClose = () => {
+    localStorage.removeItem("token")
+    window.location = "/"
+}
   const [open, setOpen] = useState(true);// hooks pour connaitre letat du button qui va reduire le sidebar
   const [submenuOpen, setSubmenuOpen] = useState(false);// hooks pour connaitre letat des sous menus
   const Menus = [
@@ -29,7 +34,7 @@ export default function Sidebar() {
     },
     { title: "Voyagers" ,icon:<FaPersonCirclePlus />},
     { title: "Reservation" ,icon:<FaRegBookmark/>},
-    { title: "log out",icon:<FaPowerOff /> },
+    { title: "log out",icon:<FaPowerOff /> ,function:handleClose },
   ];
 
   return (
@@ -61,11 +66,11 @@ export default function Sidebar() {
                 <li key={index} className={` text-gray-400 text-sm flex items-center 
                 	                          gap-x-4 cursor-pointer p-2
                                           hover:bg-searchfield rounded-md 
-                                            ${menu.spacing ? "mt-9" : "mt-2"}`}>
-                  <span className="text-2xl block float-left" >{menu.icon ? menu.icon : <BiSolidDashboard />}</span>
-                  <span className={`text-base font-medium flex-1 duration-300 ${!open && "hidden"}`}>{
+                                            ${menu.spacing ? "mt-9" : "mt-2"}`} onClick={menu.function}>
+                  <span className="text-2xl block float-left" component={<Link to={`${menu.title}`}  />} >{menu.icon ? menu.icon : <BiSolidDashboard />}</span>
+                  <Link to={`${menu.title}`} className={`text-base font-medium flex-1 duration-300 ${!open && "hidden"}`} onClick={menu.function} >{
                     menu.title}
-                  </span>
+                  </Link>
                   { !open && <span className="scale-0 hidden hover:block ">test</span>}
                   {menu.subMenu && (
                     <IoIosArrowDropdown className={`${submenuOpen && "rotate-180"}`} onClick={() => setSubmenuOpen(!submenuOpen) } />
@@ -88,8 +93,7 @@ export default function Sidebar() {
             })}
           </ul>
         </div>
-        <div className="p-7">
-          {" "}
+        <div className=" componant p-7">
           <h1 className="text-2xl font-semibold">Home</h1>
         </div>
       </div>
