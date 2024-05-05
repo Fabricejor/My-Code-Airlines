@@ -25,6 +25,8 @@ class Graph1 extends Component {
 	render() {	
 		const options = {
 			animationEnabled: true,
+			zoomEnabled: true,
+			animationDuration: 10000,
 			theme: "dark1", // "light1", "light2", "dark1", "dark2"
 			title: {
 				text: "Top most visited countries in the world - June 2024"

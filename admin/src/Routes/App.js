@@ -1,10 +1,7 @@
 import {createBrowserRouter} from "react-router-dom"
-// import Home from "../Pages/Home"
-// import "../Assets/Styles/main.scss"
 //les contenus des composants
 import ProtectedRoute from "../Services/ProtectedRoute"
 import SignIn from "../Components/Connection/SignIn";
-// import Graph1 from "../Components/graph/Graph1";
 import Sidebar from "../Layouts/Sidebar";
 
 const token = localStorage.getItem("token");
@@ -51,6 +48,12 @@ path: "/home/Voyagers", element:
         <Sidebar />
     </ProtectedRoute>
     },
+    {
+      path: "/home/Admin", element:
+      <ProtectedRoute isAuthenticated={token}>
+          <Sidebar />
+      </ProtectedRoute>
+      },
 
 ])
 

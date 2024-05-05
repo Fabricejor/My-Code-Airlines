@@ -12,12 +12,13 @@ import { VscGraph } from "react-icons/vsc";
 import { FaPersonCirclePlus } from "react-icons/fa6";
 
 //importation des differetent menu
+import Home from "../Pages/Home"
 import UserMenu from "../Components/user/UserMenu";
 import FlightMenu from "../Components/flight/FlightMenu";
 import PassagersMenu from "../Components/passager/PassagersMenu";
 import BookingMenu from "../Components/Connection/book/BookingMenu";
 import Graph1 from "../Components/graph/Graph1";
-
+import Admin from "../Components/admin/Admin";
 export default function Sidebar() {
 
   const handleClose = () => {
@@ -45,7 +46,14 @@ export default function Sidebar() {
         case "/home/Graphiques":
           return (<Graph1/>);
         break; 
+        case "/home/Admin":
+          return (<Admin/>);
+        break;
+        case "/home":
+          return (<Home/>);
+        break; 
       default:
+              <Home/>
         break;
     }
   }
@@ -128,7 +136,7 @@ export default function Sidebar() {
             })}
           </ul>
         </div>
-        <div className=" componant p-7">
+        <div className="componant p-7">
           {
             contentRender()
           }
