@@ -50,7 +50,7 @@ const SignIn = () => {
                     // const expiresIn = 86400; // 1 jour en secondes
                     // const expirationTime = new Date().getTime() + expiresIn * 1000;
                     // localStorage.setItem("tokenExpiration", expirationTime);
-                    window.location = "/home";
+                    window.location = "/";
                 }
             } else {
                 setError("Réponse invalide du serveur");

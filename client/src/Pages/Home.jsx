@@ -26,7 +26,7 @@ export default function Home() {
           <div className="overlay"></div>
         </div>
         <div className="banner-text">
-          <h1>Des horizons sans limite avec My Code Airline.</h1>
+          <h1>Limitless horizons with My Code Airline.</h1>
           <p>test banner text</p>
         </div>
         <div className="form-container">
@@ -45,7 +45,11 @@ export default function Home() {
           </div>
           <div className="form-item">
             <label>type <IoIosArrowDown /> </label>
-            <input type="text"  placeholder="type of travel"/>
+            <select type="select" name="type"  placeholder="type of travel">
+                    <option valeur="">Type travel</option>
+                    <option valeur="one-way">One Way</option>
+                    <option valeur="round-trip">Round-Trip</option>
+            </select>
           </div>
           <div className="button-from">
             <button>search flight <FaRegPaperPlane /></button>

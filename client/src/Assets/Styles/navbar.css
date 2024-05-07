@@ -40,18 +40,20 @@
     
 }
 
-.nav-item li {
+.nav-item li , .customLink ,.customLink:visited {
     font-family: "Poppins", sans-serif;
     font-style: medium 18;
     font-weight: 400;
     text-decoration: none;
+    cursor: pointer;
+    color: black;
 }
 .connection{
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.Signin{
+.Signin , .Signin .customLink{
     font-family: "Poppins", sans-serif;
     background-color: transparent;
     border: none;

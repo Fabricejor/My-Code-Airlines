@@ -123,7 +123,7 @@ body{
   .form-item input[type="date"]::-webkit-calendar-picker-indicator {
     display: none; /* Masquer l'icône par défaut */
   }
-  .form-item input{
+  .form-item input,.form-item select{
     font-family: "Dm sans";
     background-color: #DEE5E5;
     border: none;
