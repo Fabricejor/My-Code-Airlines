@@ -16,22 +16,28 @@
     margin: 10px 10px 0 10px;
     z-index: 1;
     background: rgba(255, 255, 255, 0.4);
-    border-radius: 12px;
-    padding: 0 7px 0 7px;
+    border-radius: 7px;
+    padding: 0 0px 0 0px;
 
 }
-
-.logo-content h3 {
-    font-family: "Poppins", sans-serif;
+.logo-content{
+    width: 7%;
 }
-
+.logo-content img {
+    width: 100%;
+    height: 70%;
+    margin-right: 0;
+}
+.nav-item{
+    margin-left:0 ;
+}
 .nav-item ul {
     display: flex;
     justify-content: space-between;
     align-items: center;
     list-style: none;
     width: 100%;
-
+    
 }
 
 .nav-item li {
@@ -39,4 +45,27 @@
     font-style: medium 18;
     font-weight: 400;
     text-decoration: none;
+}
+.connection{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.Signin{
+    font-family: "Poppins", sans-serif;
+    background-color: transparent;
+    border: none;
+    font-weight: 600;
+    margin-right: 30px;
+    text-wrap:nowrap;
+}
+
+.Signup{
+    background-color: #00a9e6;
+    border: none;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    height: 45px;
+    width: 50%;
+    border-radius: 5px;
 }

@@ -2,8 +2,10 @@ import React from "react";
 import Navbar from "../Layouts/Navbar";
 import banner from "../Assets/video/banner.mp4";
 import "../Assets/Styles/home.css";
-
-
+import { FaStar } from "react-icons/fa6";
+import { IoIosArrowDown } from "react-icons/io";
+import { FaRegCalendarAlt } from "react-icons/fa";
+import { FaRegPaperPlane } from "react-icons/fa";
 
 export default function Home() {
   const TrendingDestination= [
@@ -30,22 +32,23 @@ export default function Home() {
         <div className="form-container">
           <div className="form-item">
             <label>Start</label>
-            <input type="text" />
+            <input type="text"  placeholder="Where do you from"/>
           </div>
           <div className="form-item">
             <label>Destination</label>
-            <input type="text" />
+            <input type="text" placeholder="Where are you going?" />
           </div>
-          <div className="form-item">
+          <div className="form-item date">
             <label>Date</label>
-            <input type="date" />
+            <FaRegCalendarAlt className="dateIcon" />
+            <input placeholder="Choose" type="date" onfocus="(this.type = 'date')" />
           </div>
           <div className="form-item">
-            <label>type</label>
-            <input type="text" />
+            <label>type <IoIosArrowDown /> </label>
+            <input type="text"  placeholder="type of travel"/>
           </div>
           <div className="button-from">
-            <button>search flight</button>
+            <button>search flight <FaRegPaperPlane /></button>
           </div>
         </div>
 
@@ -55,6 +58,7 @@ export default function Home() {
       <section className="chooseUS">
         <div className="ChooseUs-img">
           <img src="whyChose.jpg" alt="choose img" />
+          <p className="bottom-left-text"><FaStar className="star" /> 4.9</p>
         </div>
         <div className="ChooseUs-content">
           <div className="title">
