@@ -1,0 +1,241 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    /* padding: 0; */
+    margin: auto;
+}
+html, body {
+  margin: 0;
+  padding: 0;
+}
+::-webkit-scrollbar {
+  width: 1px;
+  height: 1px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(90, 90, 90);
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+}
+body{
+    background-color: #EAF0F0;
+}
+
+/* ? Baniere css */
+.banner {
+    position: relative;
+    height: 570px;
+    width: 100%;
+  }
+  
+  .banner-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    z-index: -1;
+  }
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* Couleur de fond sombre avec une opacité de 50% */
+  }
+  .banner-video video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+  }
+  
+  .banner-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 1;
+    color: #fff;
+  }
+  
+  .banner-text h1 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+  }
+  
+  .banner-text p {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+  }
+  .form-container {
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    top: 85%;
+    left: 7%;
+    background-color: #fff;
+    width: 85%;
+  }
+  .form-container .form-item{
+    display: flex;
+    flex-direction: column;
+  }
+  .form-item label{
+    font-family: "DM Sans", sans-serif;
+    margin-left: 1px;
+  }
+
+/* ? Choose us css */
+.chooseUS{
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: 7%;
+}
+.ChooseUs-img {
+    width: 30%;
+    height: 240px;
+    border-radius: 12px;
+}
+.ChooseUs-img img{
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+
+}
+.ChooseUs-content{
+    width: 50%;
+}
+.ChooseUs-content .title{
+    display: flex;
+    justify-content:start;
+    align-items: center;
+    font-family: "Dm sans";
+}
+.title .color{
+    color:#00a9e6;
+}
+
+
+.ChooseUs-content ul {
+    list-style: none; /* Supprime les puces par défaut */
+    padding-left: 20px; /* Ajoute un espacement à gauche pour la liste */
+    line-height: 3;
+    font-family: "Dm sans",sans-serif;
+    font-weight: bold;
+  }
+  
+  .ChooseUs-content ul li {
+    position: relative; /* Définit une position relative pour les éléments de liste */
+    padding-left: 20px; /* Ajoute un espace à gauche pour les éléments de liste */
+    /* color: #00a9e6; Couleur des puces */
+  }
+  
+  .ChooseUs-content ul li::before {
+    content: ""; /* Contenu vide */
+    position: absolute; /* Définit une position absolue */
+    top: 50%; /* Positionne le losange au milieu de l'élément de liste */
+    left: 0; /* Positionne le losange à gauche de l'élément de liste */
+    transform: translateY(-50%); /* Centre verticalement le losange */
+    width: 15px; /* Largeur du losange */
+    height: 15px; /* Hauteur du losange */
+    background-color: #00a9e6; /* Couleur du losange */
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%); /* Définit la forme du losange */
+  }
+.ChooseUs-content p{
+    font-family: "Dm sans",sans-serif;
+    font-size: 12px;
+    color: gray;
+}
+
+/* la partie trend des destination la */
+.Destinations{
+    width: 96%;
+    /* margin-top: 250px; */
+    margin: 150px 2% 0 2%;
+}
+.trend-title .h1 {
+    display: flex;
+    align-items: baseline;
+    font-family: "Dm sans", sans-serif;
+    font-weight: bold;
+    margin-left: 2%;
+}
+.trend-title .h1 .colors{
+    color: #00a9e6;
+}
+.trend-title p{
+    font-family: "Dm sans",sans-serif;
+    font-size: 15px;
+    color: gray;
+    margin-left: 2%;
+    margin-right: 2%;
+    text-align: justify;
+}
+.h1 h1{
+    margin :7px;
+    font-size: 40px;
+}
+.card-content{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.card {
+    width: 27%;
+    height: 400px;
+    position: relative;
+    margin-top: 2%;
+}
+.vertical-text {
+    writing-mode: vertical-rl; /* Écriture verticale de haut en bas (de droite à gauche) */
+    text-orientation: mixed; /* Orientation du texte mélangé */
+    transform: rotate(180deg); /* Rotation de 180 degrés pour remettre le texte à l'endroit */
+    transform-origin: bottom; /* Origine de la transformation à partir du bas */
+    white-space: nowrap; /* Empêcher le texte de se retourner sur plusieurs lignes */
+    /* position: absolute; Position absolue pour ajuster l'emplacement */
+    right: 0; /* Aligner le texte à droite */
+    top: 50%; /* Aligner le texte au milieu verticalement */
+    margin-left: -1%;
+    margin-bottom: 2%;
+    font-family: "Dm sans", sans-serif;
+    font-weight: bold;
+  }
+.card h2{
+    position: absolute; /* Positionnement absolu */
+  top: 0; /* Alignement en haut */
+  left: 50%; /* Alignement au centre horizontalement */
+  transform: translateX(-50%); /* Décalage de 50% vers la gauche pour centrer le texte */
+  margin-top: 0px; /* Marge supplémentaire au-dessus du texte */
+  color: black; /* Couleur du texte */
+  text-align: center; /* Alignement centré */
+  z-index: 1;
+  font-family: "Dm sans", sans-serif;
+  border: #EAF0F0 1px solid;
+  width: 95%;
+  border-radius: 0 0 12px 12px;
+  background-color: #EAF0F0;
+}
+.card img{
+    width: 100%;
+    height: 100%;
+    border-radius:20px ;
+    z-index: -1;
+}
