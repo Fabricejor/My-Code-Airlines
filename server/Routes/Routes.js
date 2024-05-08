@@ -4,6 +4,10 @@ const FlightCrud = require("../Controllers/FlightCrud");
 const TicketCrud = require("../Controllers/TicketCrud");
 const VoyagerCrud = require("../Controllers/VoyagerCrud");
 
+//mail controller
+const contact = require("../Controllers/mails/contact");
+
+
 
 //Authentication with JWT
 router.post("/signup", Auth.signUP) ;
@@ -28,5 +32,7 @@ router.get("/findVoyager/:id",VoyagerCrud.oneVoyager);
 router.post("/addVoyager",VoyagerCrud.addVoyager);
 router.delete("/deleteVoyager/:id", VoyagerCrud.deleteVoyager);
 
+//mails gestions
+router.post('/sendmail', contact.sendmail);
 
 module.exports = router;

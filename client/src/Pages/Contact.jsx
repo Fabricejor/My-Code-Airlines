@@ -1,8 +1,31 @@
 import React from 'react'
 import "../Assets/Styles/style.css"
 import { Link } from 'react-router-dom'
+import { useState } from 'react'
+import axios from 'axios';
 
 export default function Contact() {
+    const [nom, setNom] = useState('');
+    const [email, setEmail] = useState('');
+    const [numero, setNumero] = useState('');
+    const [message, setMessage] = useState('');
+
+    const sendMail = (e) =>{
+        alert('votre message est en cours d\'envoie');
+        e.preventDefault();
+
+        // Envoi des données du formulaire au serveur backend
+        axios.post('http://localhost:5000/api/sendmail', { nom, email, numero, message })
+          .then((response) => {
+            console.log(response.data); // Affiche la réponse du serveur backend
+            // Réinitialiser le formulaire ou afficher un message de succès
+          })
+          .catch((error) => {
+            console.error('Erreur lors de l\'envoi des données du formulaire :', error);
+            // Afficher un message d'erreur à l'utilisateur si nécessaire
+          });
+    }
+
     return (
         <div>
             <div className="background">
@@ -31,20 +54,20 @@ export default function Contact() {
                             <div className="screen-body-item">
                                 <div className="app-form">
                                     <div className="app-form-group">
-                                        <input className="app-form-control" placeholder="NAME"/>
+                                        <input className="app-form-control" value={nom} onChange={(e) => setNom(e.target.value)} placeholder="NAME"/>
                                     </div>
                                     <div className="app-form-group">
-                                        <input className="app-form-control" placeholder="EMAIL"/>
+                                        <input className="app-form-control" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="EMAIL"/>
                                     </div>
                                     <div className="app-form-group">
-                                        <input className="app-form-control" placeholder="PHONE NUMBER"/>
+                                        <input className="app-form-control" value={numero} onChange={(e) => setNumero(e.target.value)} placeholder="PHONE NUMBER"/>
                                     </div>
                                     <div className="app-form-group message">
-                                        <input className="app-form-control" placeholder="MESSAGE"/>
+                                        <input className="app-form-control" value={message} onChange={(e) => setMessage(e.target.value)} placeholder="MESSAGE"/>
                                     </div>
                                     <div className="app-form-group buttons">
                                         <button className="app-form-button"><Link className='customLinkb' to={'/'}>CANCEL</Link> </button>
-                                        <button className="app-form-button"><Link className='customLinkb' to={'/'}>SEND</Link></button>
+                                        <button className="app-form-button" type='submit' onClick={sendMail}><Link className='customLinkb' to={'/'}>SEND</Link></button>
                                     </div>
                                 </div>
                             </div>

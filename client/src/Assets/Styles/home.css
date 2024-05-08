@@ -89,6 +89,7 @@ body{
     top: 85%;
     left: 7%;
     background-color: #fff;
+    border-radius: 12px;
     width: 90%;
     height: 70px;
   }
