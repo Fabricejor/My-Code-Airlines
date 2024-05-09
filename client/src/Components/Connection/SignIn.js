@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios"
 import {Link}  from "react-router-dom"
+import "../../Assets/Styles/signup.css"
+import signinVideo from "../../Assets/video/signin.mp4"
+import { FaHome } from "react-icons/fa";
 // import Instance from '../../Services/Instance';
 // import config from '../../Services/config.js';
 
@@ -45,11 +48,11 @@ const SignIn = () => {
 
                 if (user) {
                     localStorage.setItem("token", response.token);
-                    // localStorage.setItem("user", JSON.stringify(user));
+                    localStorage.setItem("user", JSON.stringify(user));
                     // Stocker l'heure d'expiration du token
-                    // const expiresIn = 86400; // 1 jour en secondes
-                    // const expirationTime = new Date().getTime() + expiresIn * 1000;
-                    // localStorage.setItem("tokenExpiration", expirationTime);
+                    const expiresIn = 86400; // 1 jour en secondes
+                    const expirationTime = new Date().getTime() + expiresIn * 1000;
+                    localStorage.setItem("tokenExpiration", expirationTime);
                     window.location = "/";
                 }
             } else {
@@ -62,43 +65,26 @@ const SignIn = () => {
     };
 
     return (
-        <div className='layout-signin'>
-            <div className='form-signin'>
-                <form onSubmit={handleSubmit}>
-                    <div className='parent-form-input'>
-                        <label htmlFor='email'>Email:</label>
-                        <input
-                            className='input'
-                            type='email'
-                            name='email'
-                            id='email'
-                            value={data.email}
-                            onChange={handleChange}
-                            required
-                        />
-                    </div>
-                    <div className='parent-form-input'>
-                        <label htmlFor='mdp'>Mot de passe:</label>
-                        <input
-                            className='input'
-                            type='mdp'
-                            name='mdp'
-                            id='mdp'
-                            value={data.mdp}
-                            onChange={handleChange}
-                            required
-                        />
-                    </div>
-                    <button onClick={handleSubmit} className='btn-form-connection' id='btn-signin'>
-                        Se connecter
-                    </button>
-                </form>
-
-            </div>
-            <div>
-                {error && <h1 style={{ color: 'red' }}>{error.response.data.message}</h1>}
-            </div>
+        <div className="vid-container">
+        <video id="Video1" className="bgvid back" autoPlay="true" muted="muted" preload="auto" loop>
+            <source src={signinVideo} type="video/mp4"/>
+        </video>
+        <div className="inner-container" style={{height:"400px"}}>
+          <form className="box">
+            <Link to={'/'}><FaHome /></Link>
+            <h1>Login</h1>
+            <input type="email" name='email'  value={data.email} onChange={handleChange} placeholder="Username"/>
+            <input type="password"  name='mdp' onChange={handleChange} value={data.password} placeholder="Password"/>
+            <button onClick={handleSubmit} >Login</button>
+            {error && <p style={{ color: 'red' }}>{error.response.data.message}</p>}
+            <p>Not a member? <span className="signup"><Link to="/Signup">Sign up</Link></span></p>
+          </form>
         </div>
+      </div> 
+
+            
+           
+       
     );
 };
 

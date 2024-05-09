@@ -1,8 +1,11 @@
 import React from 'react'
 import "../Assets/Styles/navbar.css"
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import { CgProfile } from "react-icons/cg";
 
 export default function Navbar() {
+  console.log(localStorage.getItem("token"))
+  const token = localStorage.getItem("token");
   return (
     <div className='nav-bar-container'>
     <div className='navbar'>
@@ -18,8 +21,12 @@ export default function Navbar() {
         </ul>
       </div>
       <div className='connection'>
-          <button className='Signin'><Link  className="customLink" to={"/Signin"}>Sign In</Link></button>
-          <button className='Signup'>Sign up</button>
+        {token ? (
+        <>
+        <Link title='Profils' to={'/profil'}><button className='profile' > <CgProfile  className='profil-icon' /></button></Link>
+        </>) :(<><button className='Signin'><Link  className="customLink" to={"/Signin"}>Sign In</Link></button>
+          <button className='Signup'><Link  className="customLink" to={"/Signup"}>Sign up</Link></button></>)}
+          
       </div>
     </div>
     </div>

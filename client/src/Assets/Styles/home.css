@@ -77,9 +77,20 @@ body{
     font-weight: bold;
   }
   
-  .banner-text p {
+  .banner-text button , button a {
     font-size: 1.5rem;
     margin-bottom: 30px;
+    color: #EAF0F0;
+    background-color: #00a9e6;
+    border: none;
+    border-radius: 7px;
+    transition: 0.7s ease-in-out;
+    text-decoration: none;
+  }
+  .banner-text button:hover , button a:hover{
+    transform: scale(1.1);
+    background-color: rgba(0, 0, 0, 0.2);
+    color: #00a9e6;
   }
   .form-container {
     position: absolute;
@@ -88,7 +99,7 @@ body{
     align-items: center;
     top: 85%;
     left: 7%;
-    background-color: #fff;
+    background-color: #EAF0F0;
     border-radius: 12px;
     width: 90%;
     height: 70px;
@@ -165,7 +176,7 @@ body{
   padding: 5px; /* Rembourrage autour du texte */
     font-family: "Dm sabs",sans-serif;
 }
-p .star{color: yellow;}
+p .star{color: #DABE29;}
 .ChooseUs-content{
     width: 50%;
 }
@@ -286,4 +297,98 @@ p .star{color: yellow;}
     height: 100%;
     border-radius:20px ;
     z-index: -1;
+}
+
+/* COMMENTAIRES SECTION YI WAY si quelqun lis sa un jour sachez que j'ai pas encore commencer cet partie mais je sans que je vais souffrir */
+.comment-container{
+  width: 92%;
+    /* margin-top: 250px; */
+    margin: 3% 4% 0 4%;
+}
+
+.title-com h1 {
+    font-family: "Dm sans", sans-serif;
+    font-weight: bold;
+}
+.title-com h1 strong{
+  color: #00a9e6;
+}
+.comment-title{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.btn-arrow{
+  display: flex;
+  justify-content: space-between;
+  width: 10%;
+  align-items: center;
+}
+.btn-comment{
+  width: 30px;
+  height: 100%;
+  transition: 0.5s ease-in;
+}
+.btn-comment.left{
+  color: #00a9e6;
+}
+.btn-comment.left:hover{
+  transform: scale(1.2);
+  color :white;
+  background-color: #00a9e6;
+  border-radius: 20px;
+
+}
+.btn-comment.right{
+  color :white;
+  background-color: #00a9e6;
+  border-radius: 20px;
+}
+.btn-comment.right:hover{
+  transform: scale(1.2);
+  color: #00a9e6;
+background-color: #EAF0F0;
+}
+
+.card-container{
+  width: 95%;
+  display: flex;
+  margin-bottom: 3%;
+  margin-top: 3%;
+}
+.profil-img{
+  width: 40px;
+  height: auto;
+  z-index: 1;
+  margin-top: 2%;
+  border: 3px solid #00a9e6;
+  border-radius: 100%;
+  margin:0 0 -10px 0;
+}
+.content-card{
+  background-color: #fff;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  border-radius: 7px;
+  z-index: -1;
+  width: 90%;
+  height: 150px;
+}
+.content-card p{
+  color: gray;
+  font-family: "Dm sans",sans-serif;
+  font-size: 13px;
+  text-align: justify;
+  margin: 10% 4% 2% 3%;
+}
+.card-comment{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.star{color: #DABE29;}
+.content-name{
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  margin-top: 3%;
 }

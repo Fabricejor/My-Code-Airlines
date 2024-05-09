@@ -47,6 +47,18 @@
     text-decoration: none;
     cursor: pointer;
     color: black;
+    transition: 1s;
+}
+.nav-item li:hover {
+    transform: scale(1.1);
+    background-color: #00a9e6;
+    border-radius: 12px;
+    text-align: center;
+    height: 40px;
+    padding-top: 20px;
+}
+.customLink:hover{
+    color: white;
 }
 .connection{
     display: flex;
@@ -71,3 +83,17 @@
     width: 50%;
     border-radius: 5px;
 }
+.profile{
+    width: 50px;
+    height:35px;
+    border-radius: 7px;
+    border-style: none;
+    color: white;
+    background-color: #00a9e6;
+    transition: 0.5s ease-in;
+}
+.profile:hover{
+    transform: scale(1.2);
+    border: 2px solid #006990;
+}
+
