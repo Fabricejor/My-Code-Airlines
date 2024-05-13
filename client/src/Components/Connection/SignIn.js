@@ -71,7 +71,8 @@ const SignIn = () => {
         </video>
         <div className="inner-container" style={{height:"400px"}}>
           <form className="box">
-            <Link to={'/'}><FaHome /></Link>
+    <Link to={'/'} style={{left:"50%" ,position:"relative",transform:"translateX(-50%)"}}><FaHome style={{color:"#00a9e6"}} /></Link>
+           
             <h1>Login</h1>
             <input type="email" name='email'  value={data.email} onChange={handleChange} placeholder="Username"/>
             <input type="password"  name='mdp' onChange={handleChange} value={data.password} placeholder="Password"/>

@@ -11,7 +11,7 @@ export default function Contact() {
     const [message, setMessage] = useState('');
 
     const sendMail = (e) =>{
-        alert('votre message est en cours d\'envoie');
+        alert('Votre message est en cours d\'envoi');
         e.preventDefault();
 
         // Envoi des données du formulaire au serveur backend
@@ -54,16 +54,16 @@ export default function Contact() {
                             <div className="screen-body-item">
                                 <div className="app-form">
                                     <div className="app-form-group">
-                                        <input className="app-form-control" value={nom} onChange={(e) => setNom(e.target.value)} placeholder="NAME"/>
+                                        <input className="app-form-control" type='text' value={nom} onChange={(e) => setNom(e.target.value)} placeholder="NAME"required/>
                                     </div>
                                     <div className="app-form-group">
-                                        <input className="app-form-control" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="EMAIL"/>
+                                        <input className="app-form-control" type='email' value={email} onChange={(e) => setEmail(e.target.value)} placeholder="EMAIL" required/>
                                     </div>
                                     <div className="app-form-group">
-                                        <input className="app-form-control" value={numero} onChange={(e) => setNumero(e.target.value)} placeholder="PHONE NUMBER"/>
+                                        <input className="app-form-control" type='number' value={numero} onChange={(e) => setNumero(e.target.value)} placeholder="PHONE NUMBER(+)" required/>
                                     </div>
                                     <div className="app-form-group message">
-                                        <input className="app-form-control" value={message} onChange={(e) => setMessage(e.target.value)} placeholder="MESSAGE"/>
+                                        <input className="app-form-control" type='text' value={message} onChange={(e) => setMessage(e.target.value)} placeholder="MESSAGE"required/>
                                     </div>
                                     <div className="app-form-group buttons">
                                         <button className="app-form-button"><Link className='customLinkb' to={'/'}>CANCEL</Link> </button>
@@ -78,7 +78,7 @@ export default function Contact() {
                         <a className="credits-link" href="https://github.com/Fabricejor" target="_blank">
                             <svg className="dribbble" viewBox="0 0 200 200">
                                 <g stroke="#ffffff" fill="none">
-                                    <circle cx="100" cy="100" r="90" stroke-width="20"></circle>
+                                    <circle cx="100" cy="100" r="90" strokeWidth="20"></circle>
                                     <path d="M62.737004,13.7923523 C105.08055,51.0454853 135.018754,126.906957 141.768278,182.963345" stroke-width="20"></path>
                                     <path d="M10.3787186,87.7261455 C41.7092324,90.9577894 125.850356,86.5317271 163.474536,38.7920951" stroke-width="20"></path>
                                     <path d="M41.3611549,163.928627 C62.9207607,117.659048 137.020642,86.7137169 189.041451,107.858103" stroke-width="20"></path>

@@ -1,4 +1,5 @@
-import React from "react";
+import React , { useRef, useCallback } from "react";
+import { useState } from "react";
 import Navbar from "../Layouts/Navbar";
 import banner from "../Assets/video/banner.mp4";
 import Footer from "../Layouts/Footer";
@@ -11,6 +12,11 @@ import { FiArrowLeftCircle } from "react-icons/fi";
 import { FiArrowRightCircle } from "react-icons/fi";
 
 export default function Home() {
+  const [inputType, setInputType] = useState('text');
+
+  const handleInputFocus = () => {
+    setInputType('date');
+  };
   const TrendingDestination = [
     { tittle: "Dubai", img: "dubai.jpg" },
     { tittle: "Japan", img: "japan.jpg" },
@@ -22,7 +28,24 @@ export default function Home() {
     {title:"./profil1.png",name:"lucia",country:"brazil" },
     {title:"./profil3.png",name:"Pablo",country:"Italy"}
   ]
+
+  const sectionRef = useRef(null);
+
+    const switchSection = useCallback((event) => {
+        event.preventDefault();
+        sectionRef.current.scrollIntoView({ behavior: 'smooth' });
+    }, []);
   //  console.log(localStorage.getItem('token'))
+  const today = new Date(); //creation dune variable de type date 
+  // on passe au formatage 
+  const dateString = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+
+  // ca c'est pour l'icon calendrier
+  const inputRef = useRef();
+
+  const handleIconClick = () => {
+      inputRef.current.focus();
+  };
   return (
     <>
       {/* partie navbar + baniere */}
@@ -36,46 +59,47 @@ export default function Home() {
         </div>
         <div className="banner-text">
           <h1>Limitless horizons with My Code Airline.</h1>
-          <button ><a href="#chooseUS"> see more</a></button>
+          <button onClick={switchSection} >see more</button>
         </div>
-        <div className="form-container">
+        <form className="form-container">
           <div className="form-item">
-            <label>Start</label>
-            <input type="text" placeholder="Where do you from" />
+            <label>From</label>
+            <input type="text" placeholder="Airport start" />
           </div>
           <div className="form-item">
-            <label>Destination</label>
-            <input type="text" placeholder="Where are you going?" />
+            <label>To</label>
+            <input type="text" placeholder="Your destination" />
           </div>
           <div className="form-item date">
-            <label>Date</label>
-            <FaRegCalendarAlt className="dateIcon" />
+            <label>DepartTure</label>
+            <FaRegCalendarAlt  onClick={handleIconClick} className="dateIcon" />
             <input
               placeholder="Choose"
-              type="date"
-              onFocus="(this.type = 'date')"
+              ref={inputRef}
+              type={inputType}
+              onFocus={handleInputFocus}
+              min={dateString}
             />
           </div>
           <div className="form-item">
             <label>
-              type <IoIosArrowDown />{" "}
+            Travel type <IoIosArrowDown />{" "}
             </label>
             <select type="select" name="type" placeholder="type of travel">
-              <option valeur="">Type travel</option>
               <option valeur="one-way">One Way</option>
               <option valeur="round-trip">Round-Trip</option>
             </select>
           </div>
           <div className="button-from">
-            <button>
+            <button type="submit">
               search flight <FaRegPaperPlane />
             </button>
           </div>
-        </div>
+        </form>
       </div>
-
+{/* Requete a afficher si les informations du formulaire on ete remplis */}
       {/* Section de pourquoi nous */}
-      <section className="chooseUS" id="chooseUS">
+      <section className="chooseUS" ref={sectionRef}  id="chooseUS">
         <div className="ChooseUs-img">
           <img src="whyChose.jpg" alt="choose img" />
           <p className="bottom-left-text">
@@ -101,7 +125,8 @@ export default function Home() {
           </ul>
           <p>
             Join the thousands of satisfied customers and give us the
-            opportunity to serve you.
+            opportunity to serve you.<br/>
+            Earum repellendus animi asperiores mollitia harum illo quia dicta. Praesentium aperiam amet. Dolorem praesentium sapiente aspernatur ipsum dignissimos saepe tempora est. Sapiente ea vero consectetur. Incidunt quia quae est. Mollitia consectetur optio quo qui beatae nihil aliquid qui.
           </p>
         </div>
       </section>
@@ -111,7 +136,7 @@ export default function Home() {
         <div className="trend-title">
           <div className="h1">
             <h1>Trending</h1>
-            <h1 className="colors">Destinations</h1> <h1> Now Days</h1>
+            <h1 className="colors">Destinations</h1> <h1> Nowadays</h1>
           </div>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do

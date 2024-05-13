@@ -1,11 +1,11 @@
 import {createBrowserRouter} from "react-router-dom"
 //les contenus des composants
-// import ProtectedRoute from "../Services/ProtectedRoute"
+import ProtectedRoute from "../Services/ProtectedRoute"
 import SignIn from "../Components/Connection/SignIn";
 import Home from "../Pages/Home";
 import Contact from "../Pages/Contact";
 import SignUp from "../Components/Connection/SignUp";
-
+import Flights from "../Pages/Flights";
 
 const token = localStorage.getItem("token");
 const router = createBrowserRouter([
@@ -15,7 +15,13 @@ const router = createBrowserRouter([
 
     // {path: "/products" , element: <Products />},
     {path: "/" , element: <Home/>},
-    {path: "/contact" , element: <Contact/>}
+    {path: "/contact" , element: <Contact/>},
+    {
+        path: "/flights", element:
+            <ProtectedRoute isAuthenticated={token}>
+                <Flights />
+            </ProtectedRoute>
+    },
 
 ])
 

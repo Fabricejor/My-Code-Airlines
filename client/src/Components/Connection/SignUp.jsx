@@ -3,6 +3,7 @@ import "../../Assets/Styles/signup.css"
 import signupVideo from "../../Assets/video/signup.mp4"
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import { FaHome } from "react-icons/fa";
 
 function SignUp() {
     //connexion au backend
@@ -49,6 +50,7 @@ const handleSubmit = async (e) => {
   </video>
   <div className="inner-container"  >
     <form  onSubmit={handleSubmit} className="box">
+    <Link to={'/'} style={{left:"50%" ,position:"relative",transform:"translateX(-50%)"}}><FaHome style={{color:"#00a9e6"}} /></Link>
       <h1>Register</h1>
       <input type="text" name='nom' value={formData.nom}  onChange={handleChange} placeholder="Name" required/>
       <input type="email" name='email' value={formData.email} onChange={handleChange} placeholder="Email"required/>

@@ -3,8 +3,19 @@ import "../Assets/Styles/footer.css"
 import { FaLinkedinIn ,FaFacebookF } from "react-icons/fa";
 import { BsTwitterX } from "react-icons/bs";
 import { FaArrowRight } from "react-icons/fa";
+import { Link ,useLocation} from 'react-router-dom';
+import { useState , useEffect } from 'react';
 
 export default function Footer() {
+    const location = useLocation();
+    const [mainColor, setMainColor] = useState('#00a9e6'); // Couleur par défaut
+  
+    useEffect(() => {
+      // Mettez à jour la couleur en fonction de la route actuelle
+      if (location.pathname === '/flights') {
+        setMainColor('#C08B7D'); // Exemple de couleur pour la route "/about"
+      }
+    }, [location.pathname]);
     return (
         <>
             <footer >
@@ -47,7 +58,7 @@ export default function Footer() {
                     <h3>newsletter</h3>
                     <div className='input-newsletter'>
                     <input type="email"  placeholder='Email to subscribe' />
-                    <FaArrowRight className='btn-newsletter'/>
+                    <FaArrowRight style={{backgroundColor:mainColor}} className='btn-newsletter'/>
                     </div>
                     <p>Hello, we are Lift Media. Our goal is to translate the positive effects from revolutionizing how companies engage with their clients & their team.</p>
                 </div>

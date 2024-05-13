@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
+:root{
+  --main-color: #00a9e6;
+}
 .nav-bar-container{
     position: absolute;
     display: flex;
@@ -22,14 +25,15 @@
 }
 .logo-content{
     width: 7%;
+    margin-left: 15px;
 }
 .logo-content img {
     width: 100%;
-    height: 70%;
-    margin-right: 0;
+    height: 70px;
+    margin-bottom: 0;
 }
 .nav-item{
-    margin-left:0 ;
+    /* margin-left: ; */
 }
 .nav-item ul {
     display: flex;
@@ -49,32 +53,40 @@
     color: black;
     transition: 1s;
 }
-.nav-item li:hover {
+.nav-item li:hover ,.nav-item ul li .customLink:hover {
     transform: scale(1.1);
     background-color: #00a9e6;
+    color: #fff;
     border-radius: 12px;
     text-align: center;
     height: 40px;
-    padding-top: 20px;
-}
-.customLink:hover{
-    color: white;
+    padding-top: 10px;
 }
 .connection{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-right: 2%;
 }
 .Signin , .Signin .customLink{
     font-family: "Poppins", sans-serif;
     background-color: transparent;
     border: none;
     font-weight: 600;
-    margin-right: 30px;
+    margin-right: 5px;
     text-wrap:nowrap;
+    height: 45px;
+    transition: 1 ease-in;
+}
+.Signin:hover ,.Signin .customLink:hover{
+    transform:scale(1.1);
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    background-color: #00a9e6;
 }
 
-.Signup{
+.Signup, .Signup .customLink{
     background-color: #00a9e6;
     border: none;
     font-family: "Poppins", sans-serif;
@@ -82,6 +94,11 @@
     height: 45px;
     width: 50%;
     border-radius: 5px;
+    transition: 0.7s ease-in;
+}
+.Signup:hover , .Signup .customLink:hover{
+    background-color: transparent;
+    color: #fff;
 }
 .profile{
     width: 50px;
