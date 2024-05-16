@@ -25,6 +25,7 @@ router.get("/allTicket",TicketCrud.getTicket);
 router.get("/findTicket/:id",TicketCrud.oneTicket);
 router.post("/addTicket",TicketCrud.addTicket);
 router.delete("/deleteTicket/:id", TicketCrud.deleteTicket);
+router.get("/searchFlight", FlightCrud.searchFlight);
 
 //Passager gestion
 router.get("/allVoyager",VoyagerCrud.getVoyager);

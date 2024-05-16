@@ -3,6 +3,7 @@ import "../Assets/Styles/style.css"
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import axios from 'axios';
+import Preloader from '../Components/Preloader/Preloader';
 
 export default function Contact() {
     const [nom, setNom] = useState('');
@@ -28,6 +29,7 @@ export default function Contact() {
 
     return (
         <div>
+            <Preloader/>
             <div className="background">
                 <div className="container">
                     <div className="screen">

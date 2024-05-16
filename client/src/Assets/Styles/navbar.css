@@ -47,7 +47,7 @@
 .nav-item li , .customLink ,.customLink:visited {
     font-family: "Poppins", sans-serif;
     font-style: medium 18;
-    font-weight: 400;
+    font-weight: 500;
     text-decoration: none;
     cursor: pointer;
     color: black;
@@ -76,12 +76,12 @@
     margin-right: 5px;
     text-wrap:nowrap;
     height: 45px;
-    transition: 1 ease-in;
+    transition: 1 ease-in-out;
 }
 .Signin:hover ,.Signin .customLink:hover{
-    transform:scale(1.1);
+    transform:scale(0.8);
     border: none;
-    border-radius: 5px;
+    border-radius: 12px;
     color: #fff;
     background-color: #00a9e6;
 }
@@ -94,11 +94,12 @@
     height: 45px;
     width: 50%;
     border-radius: 5px;
-    transition: 0.7s ease-in;
+    transition: 0.7s ease-in-out;
 }
 .Signup:hover , .Signup .customLink:hover{
     background-color: transparent;
     color: #fff;
+    transform: scale(0.8);
 }
 .profile{
     width: 50px;

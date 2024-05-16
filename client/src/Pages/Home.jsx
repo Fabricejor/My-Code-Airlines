@@ -1,9 +1,15 @@
+//modules front end
 import React , { useRef, useCallback } from "react";
+import { Fade ,Slide ,Zoom} from "react-awesome-reveal";
 import { useState } from "react";
+import axios from "axios";
+//composant
 import Navbar from "../Layouts/Navbar";
 import banner from "../Assets/video/banner.mp4";
 import Footer from "../Layouts/Footer";
 import "../Assets/Styles/home.css";
+import Preloader from "../Components/Preloader/Preloader";
+//icons
 import { FaStar } from "react-icons/fa6";
 import { IoIosArrowDown } from "react-icons/io";
 import { FaRegCalendarAlt } from "react-icons/fa";
@@ -46,8 +52,31 @@ export default function Home() {
   const handleIconClick = () => {
       inputRef.current.focus();
   };
+  //TRAITEMENT DE LA REQUETE des vols A MONGO DB
+  const [flightResults, setFlightResults] = useState([]); // État pour stocker les résultats de la requête
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const searchData = {
+      airport_start: formData.get('airport_start'),
+      airport_end: formData.get('airport_end'),
+      date_depart: formData.get('date_depart'),
+      // Ajoutez d'autres champs de formulaire si nécessaire
+    };
+    try {
+      // Effectuez la requête API vers votre endpoint (par exemple, '/api/flights')
+      console.log( searchData.date_depart)
+      const response = await axios.get('http://localhost:5000/api/searchFlight',{ params: searchData });
+      setFlightResults(response.data); // Mettez à jour l'état avec les résultats
+    } catch (error) {
+      console.error('Erreur lors de la récupération des vols :', error);
+    }
+  };
+  
   return (
     <>
+    <Preloader/>
       {/* partie navbar + baniere */}
       <Navbar />
       <div className="banner">
@@ -61,14 +90,14 @@ export default function Home() {
           <h1>Limitless horizons with My Code Airline.</h1>
           <button onClick={switchSection} >see more</button>
         </div>
-        <form className="form-container">
+        <form className="form-container" onSubmit={handleSubmit}>
           <div className="form-item">
             <label>From</label>
-            <input type="text" placeholder="Airport start" />
+            <input type="text" placeholder="Airport start"  name="airport_start"/>
           </div>
           <div className="form-item">
             <label>To</label>
-            <input type="text" placeholder="Your destination" />
+            <input type="text" placeholder="Your destination" name="airport_end"/>
           </div>
           <div className="form-item date">
             <label>DepartTure</label>
@@ -79,6 +108,7 @@ export default function Home() {
               type={inputType}
               onFocus={handleInputFocus}
               min={dateString}
+              name="date_depart"
             />
           </div>
           <div className="form-item">
@@ -86,8 +116,8 @@ export default function Home() {
             Travel type <IoIosArrowDown />{" "}
             </label>
             <select type="select" name="type" placeholder="type of travel">
-              <option valeur="one-way">One Way</option>
-              <option valeur="round-trip">Round-Trip</option>
+              <option value="one-way">One Way</option>
+              <option value="round-trip">Round-Trip</option>
             </select>
           </div>
           <div className="button-from">
@@ -97,11 +127,20 @@ export default function Home() {
           </div>
         </form>
       </div>
-{/* Requete a afficher si les informations du formulaire on ete remplis */}
+{/* //! Requete a afficher si les informations du formulaire on ete remplis */}
+<ul>
+        {flightResults.map((flight) => (
+          <li key={flight._id}>
+            {flight.compagnie} - \\{flight.airport_start} \\ à \\ {flight.airport_end} \\avec {flight.date_depart} <button>Book </button>
+          </li>
+        ))}
+      </ul>
       {/* Section de pourquoi nous */}
-      <section className="chooseUS" ref={sectionRef}  id="chooseUS">
-        <div className="ChooseUs-img">
-          <img src="whyChose.jpg" alt="choose img" />
+     
+      <section className="chooseUS"  ref={sectionRef}  id="chooseUS">
+      
+        <div className="ChooseUs-img"><Zoom triggerOnce="true">
+          <img src="whyChose.jpg" alt="choose img" /></Zoom>
           <p className="bottom-left-text">
             <FaStar className="star" /> 4.9
           </p>
@@ -111,6 +150,7 @@ export default function Home() {
             <h2 className="color">Why</h2>
             <h2>Choose Us</h2>
           </div>
+          <Fade cascade>
           <ul className="reason">
             <li>Reliability: We have a 95% customer satisfaction rate</li>
             <li>
@@ -123,16 +163,19 @@ export default function Home() {
               desires.
             </li>
           </ul>
+          </Fade>
           <p>
             Join the thousands of satisfied customers and give us the
             opportunity to serve you.<br/>
             Earum repellendus animi asperiores mollitia harum illo quia dicta. Praesentium aperiam amet. Dolorem praesentium sapiente aspernatur ipsum dignissimos saepe tempora est. Sapiente ea vero consectetur. Incidunt quia quae est. Mollitia consectetur optio quo qui beatae nihil aliquid qui.
           </p>
         </div>
-      </section>
 
+
+      </section>
       {/* Partie top destionation */}
       <section className="Destinations">
+        <Slide triggerOnce="true">
         <div className="trend-title">
           <div className="h1">
             <h1>Trending</h1>
@@ -145,6 +188,7 @@ export default function Home() {
             aliquip ex ea commodo consequat.
           </p>
         </div>
+        <Slide>
         <div className="card-content">
           {TrendingDestination.map((item, index) => {
             return (
@@ -155,11 +199,12 @@ export default function Home() {
             );
           })}
           <h1 className="vertical-text">MyCode Airline</h1>
-        </div>
+        </div></Slide></Slide>
       </section>
 
       {/* section des commentaires cards  */}
       <section className="comment-container">
+        <Zoom triggerOnce="True">
         <div className="comment-title">
           <div className="title-com">
             <h1>
@@ -195,7 +240,7 @@ export default function Home() {
             </div>
             </div>
             </>)})}
-        </div>
+        </div></Zoom>
       </section>
 
       {/* footer section */}

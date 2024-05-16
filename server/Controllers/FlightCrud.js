@@ -73,3 +73,28 @@ module.exports.deleteFlight = async (req ,res ) => {
         res.status(400).json({ message: error.message });
        }
 }
+// Rechercher un vol par aéroports de départ et d'arrivée
+module.exports.searchFlight = async (req, res) => {
+    try {
+        const { airport_start, airport_end , date_depart} = req.query; // Récupérer les aéroports de départ et d'arrivée depuis les paramètres de requête
+
+        console.log(date_depart);
+        // Utiliser une expression régulière pour rechercher les vols qui contiennent les aéroports spécifiés
+        const flights = await Flight.find({
+            airport_start: { $regex: airport_start, $options: "i" }, // Utilisation de l'option "i" pour une recherche insensible à la casse
+            airport_end: { $regex: airport_end, $options: "i" },
+            date_depart: { $gte: new Date(date_depart) }
+        });
+
+        // Si aucun vol correspondant n'est trouvé, renvoyer un message approprié
+        if (flights.length === 0) {
+            return res.status(404).json({ message: "Aucun vol trouvé pour les aéroports spécifiés." });
+        }
+
+        // Renvoyer les vols trouvés
+        res.status(200).json(flights);
+    } catch (error) {
+        // Si une erreur se produit, renvoyer un statut 500 avec le message d'erreur
+        res.status(500).json({ message: error.message });
+    }
+}

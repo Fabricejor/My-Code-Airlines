@@ -2,6 +2,7 @@ import React  from 'react'
 import "../Assets/Styles/navbar.css"
 import { useState , useEffect } from 'react';
 
+
 import { Link ,useLocation} from 'react-router-dom';
 import { CgProfile } from "react-icons/cg";
 
@@ -35,7 +36,7 @@ export default function Navbar() {
       <div className='connection'>
         {token ? (
         <>
-        <Link title='Profils' to={'/profil'}><button className='profile' style={{backgroundColor:mainColor}} > <CgProfile  className='profil-icon' /></button></Link>
+        <Link title='Profils' style={{marginLeft:"200px"}} to={'/profil'}><button className='profile' style={{backgroundColor:mainColor}} > <CgProfile  className='profil-icon' /></button></Link>
         </>) :(<><button className='Signin'><Link  className="customLink" to={"/Signin"}>Sign In</Link></button>
           <button className='Signup'><Link  className="customLink" to={"/Signup"}>Sign up</Link></button></>)}
           

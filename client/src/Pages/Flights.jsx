@@ -4,6 +4,8 @@ import { useLocation } from 'react-router-dom';
 import Navbar from '../Layouts/Navbar'
 import Footer from '../Layouts/Footer'
 import banner from "../Assets/video/flight.mp4";
+import Preloader from "../Components/Preloader/Preloader";
+
 import { IoIosArrowDown } from "react-icons/io";
 import { FaRegPaperPlane } from "react-icons/fa";
 import { FaRegCalendarAlt } from "react-icons/fa";
@@ -26,6 +28,7 @@ export default function Flights() {
   };
   return (
     <div>
+        <Preloader/>
         <Navbar/>
         <div className="banner">
         <div className="banner-video">
@@ -41,15 +44,15 @@ the ideal getaway.</h1>
         </div>
         <div className="form-container">
           <div className="form-item">
-            <label>Start</label>
-            <input type="text" placeholder="Where do you from" />
+            <label>From</label>
+            <input type="text" placeholder="Airport Start" />
           </div>
           <div className="form-item">
-            <label>Destination</label>
-            <input type="text" placeholder="Where are you going?" />
+            <label>To</label>
+            <input type="text" placeholder="Your Destination" />
           </div>
           <div className="form-item date">
-            <label>Date</label>
+            <label>Departure</label>
             <FaRegCalendarAlt className="dateIcon" style={{color:mainColor}}/>
             <input
               placeholder="Choose"
