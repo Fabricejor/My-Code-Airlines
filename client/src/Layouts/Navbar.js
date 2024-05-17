@@ -17,7 +17,6 @@ export default function Navbar() {
     }
   }, [location.pathname]);
 
-  console.log(localStorage.getItem("token"))
   const token = localStorage.getItem("token");
   return (
     <div className='nav-bar-container'>
@@ -30,7 +29,7 @@ export default function Navbar() {
           <li ><Link  className="customLink" to={"/"}>Home</Link></li>
           <li ><Link  className="customLink" to={"/flights"}>Flights</Link></li>
           <li ><Link  className="customLink" to={"/contact"}>Contact Us</Link></li>
-          <li ><Link  className="customLink" to={"/"}>About</Link></li>
+          <li ><Link  className="customLink" to={"/test"}>About</Link></li>
         </ul>
       </div>
       <div className='connection'>

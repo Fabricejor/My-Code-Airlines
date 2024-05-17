@@ -77,13 +77,22 @@ module.exports.deleteFlight = async (req ,res ) => {
 module.exports.searchFlight = async (req, res) => {
     try {
         const { airport_start, airport_end , date_depart} = req.query; // Récupérer les aéroports de départ et d'arrivée depuis les paramètres de requête
-
         console.log(date_depart);
+        const formatDate = (dateString) => {
+            const date = new Date(dateString);
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0'); // Ajouter un 0 devant le mois si nécessaire
+            const day = String(date.getDate()).padStart(2, '0'); // Ajouter un 0 devant le jour si nécessaire
+            return `${year}-${month}-${day}`;
+          };
+          const formattedDate = formatDate(date_depart);
+          console.log("new format: "+formattedDate);
+          console.log("type :" + typeof(formattedDate));
         // Utiliser une expression régulière pour rechercher les vols qui contiennent les aéroports spécifiés
         const flights = await Flight.find({
             airport_start: { $regex: airport_start, $options: "i" }, // Utilisation de l'option "i" pour une recherche insensible à la casse
             airport_end: { $regex: airport_end, $options: "i" },
-            date_depart: { $gte: new Date(date_depart) }
+            date_depart: { $gte: formattedDate }
         });
 
         // Si aucun vol correspondant n'est trouvé, renvoyer un message approprié

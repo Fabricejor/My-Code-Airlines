@@ -3,6 +3,7 @@ import React , { useRef, useCallback } from "react";
 import { Fade ,Slide ,Zoom} from "react-awesome-reveal";
 import { useState } from "react";
 import axios from "axios";
+
 //composant
 import Navbar from "../Layouts/Navbar";
 import banner from "../Assets/video/banner.mp4";
@@ -16,7 +17,7 @@ import { FaRegCalendarAlt } from "react-icons/fa";
 import { FaRegPaperPlane } from "react-icons/fa";
 import { FiArrowLeftCircle } from "react-icons/fi";
 import { FiArrowRightCircle } from "react-icons/fi";
-
+import { ImArrowRight } from "react-icons/im";
 export default function Home() {
   const [inputType, setInputType] = useState('text');
 
@@ -34,6 +35,225 @@ export default function Home() {
     {title:"./profil1.png",name:"lucia",country:"brazil" },
     {title:"./profil3.png",name:"Pablo",country:"Italy"}
   ]
+// ! PARTIE DES DESTINATIIONS
+const [destinations] = useState([
+  "Kaboul - Afghanistan",
+  "Tirana - Albanie",
+  "Alger - Algérie",
+  "Andorre-la-Vieille - Andorre",
+  "Luanda - Angola",
+  "Saint John's - Antigua-et-Barbuda",
+  "Buenos Aires - Argentine",
+  "Erevan - Arménie",
+  "Canberra - Australie",
+  "Vienne - Autriche",
+  "Bakou - Azerbaïdjan",
+  "Nassau - Bahamas",
+  "Manama - Bahreïn",
+  "Dacca - Bangladesh",
+  "Bridgetown - Barbade",
+  "Minsk - Biélorussie",
+  "Bruxelles - Belgique",
+  "Belmopan - Belize",
+  "Porto-Novo - Bénin",
+  "Thimphou - Bhoutan",
+  "La Paz - Bolivie",
+  "Sarajevo - Bosnie-Herzégovine",
+  "Gaborone - Botswana",
+  "Brasília - Brésil",
+  "Sofia - Bulgarie",
+  "Ouagadougou - Burkina Faso",
+  "Bujumbura - Burundi",
+  "Phnom Penh - Cambodge",
+  "Yaoundé - Cameroun",
+  "Ottawa - Canada",
+  "Praia - Cap-Vert",
+  "Bangui - République centrafricaine",
+  "N'Djaména - Tchad",
+  "Santiago - Chili",
+  "Pékin - Chine",
+  "Bogotá - Colombie",
+  "Moroni - Comores",
+  "Kinshasa - République démocratique du Congo",
+  "Brazzaville - Congo",
+  "San José - Costa Rica",
+  "Yamoussoukro - Côte d'Ivoire",
+  "Zagreb - Croatie",
+  "La Havane - Cuba",
+  "Nicosie - Chypre",
+  "Prague - République tchèque",
+  "Copenhague - Danemark",
+  "Djibouti - Djibouti",
+  "Roseau - Dominique",
+  "Saint-Domingue - République dominicaine",
+  "Dili - Timor oriental",
+  "Quito - Équateur",
+  "Le Caire - Égypte",
+  "San Salvador - Salvador",
+  "Malabo - Guinée équatoriale",
+  "Asmara - Érythrée",
+  "Tallinn - Estonie",
+  "Addis-Abeba - Éthiopie",
+  "Suva - Fidji",
+  "Helsinki - Finlande",
+  "Paris - France",
+  "Libreville - Gabon",
+  "Banjul - Gambie",
+  "Tbilissi - Géorgie",
+  "Berlin - Allemagne",
+  "Accra - Ghana",
+  "Athènes - Grèce",
+  "Saint George's - Grenade",
+  "Guatemala - Guatemala",
+  "Conakry - Guinée",
+  "Bissau - Guinée-Bissau",
+  "Georgetown - Guyana",
+  "Port-au-Prince - Haïti",
+  "Tegucigalpa - Honduras",
+  "Budapest - Hongrie",
+  "Reykjavik - Islande",
+  "New Delhi - Inde",
+  "Jakarta - Indonésie",
+  "Téhéran - Iran",
+  "Bagdad - Irak",
+  "Dublin - Irlande",
+  "Jérusalem - Israël",
+  "Rome - Italie",
+  "Kingston - Jamaïque",
+  "Tokyo - Japon",
+  "Amman - Jordanie",
+  "Astana - Kazakhstan",
+  "Nairobi - Kenya",
+  "Tarawa - Kiribati",
+  "Pristina - Kosovo",
+  "Koweït - Koweït",
+  "Bichkek - Kirghizistan",
+  "Vientiane - Laos",
+  "Riga - Lettonie",
+  "Beyrouth - Liban",
+  "Maseru - Lesotho",
+  "Monrovia - Libéria",
+  "Tripoli - Libye",
+  "Vaduz - Liechtenstein",
+  "Vilnius - Lituanie",
+  "Luxembourg - Luxembourg",
+  "Skopje - Macédoine du Nord",
+  "Antananarivo - Madagascar",
+  "Lilongwe - Malawi",
+  "Kuala Lumpur - Malaisie",
+  "Malé - Maldives",
+  "Bamako - Mali",
+  "La Valette - Malte",
+  "Majuro - Îles Marshall",
+  "Nouakchott - Mauritanie",
+  "Port-Louis - Maurice",
+  "Mexico - Mexique",
+  "Palikir - Micronésie",
+  "Chișinău - Moldavie",
+  "Monaco - Monaco",
+  "Oulan-Bator - Mongolie",
+  "Podgorica - Monténégro",
+  "Rabat - Maroc",
+  "Maputo - Mozambique",
+  "Naypyidaw - Myanmar",
+  "Windhoek - Namibie",
+  "Nauru - Nauru",
+  "Katmandou - Népal",
+  "Amsterdam - Pays-Bas",
+  "Wellington - Nouvelle-Zélande",
+  "Managua - Nicaragua",
+  "Niamey - Niger",
+  "Abuja - Nigéria",
+  "Pyongyang - Corée du Nord",
+  "Oslo - Norvège",
+  "Mascate - Oman",
+  "Islamabad - Pakistan",
+  "Ngerulmud - Palaos",
+  "Jérusalem-Est - Palestine",
+  "Panama - Panama",
+  "Port Moresby - Papouasie-Nouvelle-Guinée",
+  "Asunción - Paraguay",
+  "Lima - Pérou",
+  "Manille - Philippines",
+  "Varsovie - Pologne",
+  "Lisbonne - Portugal",
+  "Doha - Qatar",
+  "Bucarest - Roumanie",
+  "Moscou - Russie",
+  "Kigali - Rwanda",
+  "Basseterre - Saint-Christophe-et-Niévès",
+  "Castries - Sainte-Lucie",
+  "Kingstown - Saint-Vincent-et-les-Grenadines",
+  "Apia - Samoa",
+  "Saint-Marin - Saint-Marin",
+  "São Tomé - Sao Tomé-et-Principe",
+  "Riyad - Arabie saoudite",
+  "Dakar - Sénégal",
+  "Belgrade - Serbie",
+  "Victoria - Seychelles",
+  "Freetown - Sierra Leone",
+  "Singapour - Singapour",
+  "Bratislava - Slovaquie",
+  "Ljubljana - Slovénie",
+  "Honiara - Îles Salomon",
+  "Mogadiscio - Somalie",
+  "Pretoria - Afrique du Sud",
+  "Séoul - Corée du Sud",
+  "Juba - Soudan du Sud",
+  "Madrid - Espagne",
+  "Colombo - Sri Lanka",
+  "Khartoum - Soudan",
+  "Paramaribo - Suriname",
+  "Mbabane - Eswatini",
+  "Stockholm - Suède",
+  "Berne - Suisse",
+  "Damas - Syrie",
+  "Douchanbé - Tadjikistan",
+  "Dar es Salaam - Tanzanie",
+  "Bangkok - Thaïlande",
+  "Dili - Timor-Leste",
+  "Lomé - Togo",
+  "Nuku'alofa - Tonga",
+  "Port-d'Espagne - Trinité-et-Tobago",
+  "Tunis - Tunisie",
+  "Ankara - Turquie",
+  "Achgabat - Turkménistan",
+  "Funafuti - Tuvalu",
+  "Kampala - Ouganda",
+  "Kiev - Ukraine",
+  "Abou Dhabi - Émirats arabes unis",
+  "Londres - Royaume-Uni",
+  "Washington, D.C. - États-Unis",
+  "Montevideo - Uruguay",
+  "Tachkent - Ouzbékistan",
+  "Port-Vila - Vanuatu",
+  "Cité du Vatican - Vatican",
+  "Caracas - Venezuela",
+  "Hanoï - Viêt Nam",
+  "Sanaa - Yémen",
+  "Lusaka - Zambie",
+  "Harare - Zimbabwe",
+]);
+
+const [inputValue1, setInputValue1] = useState('');
+const [inputValue2, setInputValue2] = useState('');
+
+  // Filtrer les destinations basées sur l'entrée de l'utilisateur et limiter à 10
+  const filteredDestinations1 = destinations.filter(destination => 
+    destination.toLowerCase().includes(inputValue1.toLowerCase())
+  ).slice(0, 10);
+
+  const filteredDestinations2 = destinations.filter(destination => 
+    destination.toLowerCase().includes(inputValue2.toLowerCase())
+  ).slice(0, 10);
+
+  const handleChange1 = (event) => {
+    setInputValue1(event.target.value);
+  }
+
+  const handleChange2 = (event) => {
+    setInputValue2(event.target.value);
+  }
 
   const sectionRef = useRef(null);
 
@@ -73,7 +293,13 @@ export default function Home() {
       console.error('Erreur lors de la récupération des vols :', error);
     }
   };
-  
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  };
   return (
     <>
     <Preloader/>
@@ -93,11 +319,21 @@ export default function Home() {
         <form className="form-container" onSubmit={handleSubmit}>
           <div className="form-item">
             <label>From</label>
-            <input type="text" placeholder="Airport start"  name="airport_start"/>
+            <input type="text" list="destinations1" placeholder="Airport start"  name="airport_start" value={inputValue1} onChange={handleChange1}/>
+            <datalist id="destinations1">
+            {filteredDestinations1.map((destination, index) => 
+          <option key={index} value={destination} />
+        )}
+      </datalist>
           </div>
           <div className="form-item">
             <label>To</label>
-            <input type="text" placeholder="Your destination" name="airport_end"/>
+            <input type="text" list="destinations2" placeholder="Your destination" name="airport_end" value={inputValue2} onChange={handleChange2}/>
+            <datalist id="destinations2">
+            {filteredDestinations2.map((destination, index) => 
+          <option key={index} value={destination} />
+        )}
+      </datalist>
           </div>
           <div className="form-item date">
             <label>DepartTure</label>
@@ -109,6 +345,7 @@ export default function Home() {
               onFocus={handleInputFocus}
               min={dateString}
               name="date_depart"
+              required
             />
           </div>
           <div className="form-item">
@@ -128,13 +365,16 @@ export default function Home() {
         </form>
       </div>
 {/* //! Requete a afficher si les informations du formulaire on ete remplis */}
-<ul>
-        {flightResults.map((flight) => (
-          <li key={flight._id}>
-            {flight.compagnie} - \\{flight.airport_start} \\ à \\ {flight.airport_end} \\avec {flight.date_depart} <button>Book </button>
+<div className="flight-container">
+<ul className="flight-list">
+        {
+        flightResults.map((flight) => (
+          <li className="flight-info" key={flight._id}>
+            <div className="flight1"><div className="compagnie">{flight.compagnie}</div>  <div className="destination">{flight.airport_start} <ImArrowRight/> {flight.airport_end}</div> </div><div className="temps">  <div className="date_depart">{formatDate(flight.date_depart)} </div><div className="dure"> duré: {flight.dure} h</div></div><button className="book">Book </button>
           </li>
         ))}
       </ul>
+</div>
       {/* Section de pourquoi nous */}
      
       <section className="chooseUS"  ref={sectionRef}  id="chooseUS">
