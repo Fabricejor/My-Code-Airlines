@@ -1,36 +1,56 @@
-import React from 'react'
-import { useState , useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
-import Navbar from '../Layouts/Navbar'
-import Footer from '../Layouts/Footer'
+import React from "react";
+import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import Navbar from "../Layouts/Navbar";
+import Footer from "../Layouts/Footer";
 import banner from "../Assets/video/flight.mp4";
 import Preloader from "../Components/Preloader/Preloader";
 
-import { IoIosArrowDown } from "react-icons/io";
-import { FaRegPaperPlane } from "react-icons/fa";
-import { FaRegCalendarAlt } from "react-icons/fa";
-import "../Assets/Styles/flight.css"
+import axios from 'axios';
+
+import { GoBookmark } from "react-icons/go";
+import "../Assets/Styles/flight.css";
+import { useParams } from "react-router-dom";
 
 export default function Flights() {
-    const location = useLocation();
-  const [mainColor, setMainColor] = useState('#00a9e6'); // Couleur par défaut
+  const { flightId } = useParams();
+  const location = useLocation();
+  const [mainColor, setMainColor] = useState("#00a9e6"); // Couleur par défaut
+  const [flightDetails, setFlightDetails] = useState(null); // État pour les détails du vol
 
   useEffect(() => {
     // Mettez à jour la couleur en fonction de la route actuelle
-    if (location.pathname === '/flights') {
-      setMainColor('#C08B7D'); // Exemple de couleur pour la route "/about"
+    if (
+      location.pathname === "/flights" ||
+      location.pathname === `/flights/${flightId}`
+    ) {
+      setMainColor("#C08B7D"); // Exemple de couleur pour la route "/about"
     }
   }, [location.pathname]);
-    const [inputType, setInputType] = useState('text');
+  //infromations cachés du vols 
+  useEffect(() => {
+    if (flightId) {
+      // Fonction pour récupérer les détails du vol
+      const fetchFlightDetails = async () => {
+        try {
+          const response = await axios.get(`http://localhost:5000/api/findFlight/${flightId}`);
+          setFlightDetails(response.data);
+          console.log(flightDetails.compagnie);
+        } catch (error) {
+          console.error("Erreur lors de la récupération des détails du vol", error);
+        }
+      };
 
-  const handleInputFocus = () => {
-    setInputType('date');
-  };
+      fetchFlightDetails();
+    }
+  }, [flightId]);
+  //traitement donnés passager plus item
+  const [num, setNum] = useState(0);
   return (
     <div>
-        <Preloader/>
-        <Navbar/>
-        <div className="banner">
+      <Preloader />
+      <Navbar />
+      <div className="banner">
         <div className="banner-video">
           <video autoPlay muted loop id="banner-video">
             <source src={banner} type="video/mp4" />
@@ -38,47 +58,53 @@ export default function Flights() {
           <div className="overlay"></div>
         </div>
         <div className="banner-text">
-          <h1 style={{color:mainColor}} >Embark on your journey to secure 
-the ideal getaway.</h1>
-          
+          <h1 style={{ color: mainColor }}>
+            Embark on your journey to secure the ideal getaway.
+          </h1>
         </div>
-        <div className="form-container">
+        <form className="form-container">
           <div className="form-item">
-            <label>From</label>
-            <input type="text" placeholder="Airport Start" />
-          </div>
-          <div className="form-item">
-            <label>To</label>
-            <input type="text" placeholder="Your Destination" />
-          </div>
-          <div className="form-item date">
-            <label>Departure</label>
-            <FaRegCalendarAlt className="dateIcon" style={{color:mainColor}}/>
+            <label>Passagers Numbers</label>
             <input
-              placeholder="Choose"
-              type={inputType}
-      onFocus={handleInputFocus}
+              type="Number"
+              min={1}
+              max={3}
+              placeholder="Number of passager"
+              value={num}
+              onChange={(e) => setNum(e.target.value)}
+              required
             />
           </div>
-          <div className="form-item">
-            <label>
-              type <IoIosArrowDown />{" "}
-            </label>
-            <select type="select" name="type" placeholder="type of travel">
-              <option valeur="">Type travel</option>
-              <option valeur="one-way">One Way</option>
-              <option valeur="round-trip">Round-Trip</option>
-            </select>
-          </div>
           <div className="button-from">
-            <button style={{background:mainColor , color:'white'}}>
-              search flight <FaRegPaperPlane />
+            <button
+              style={{ background: mainColor, color: "white" }}
+            >
+              finish Booking
+              <GoBookmark />
             </button>
           </div>
-        </div>
+        </form>
       </div>
-
-      <Footer/>
+      <section className="passager-container">
+        {Array.from({ length:  Math.min(num, 3)  }).map((_, index) => (
+          <div className="form-passager">
+            <div key={index} className="form-item">
+              <label>Passager {index + 1}</label>
+              <input type="text" placeholder={`Passenger ${index + 1} name`} />
+            </div>
+            <div key={index} className="form-item">
+              <label>passport {index + 1}</label>
+              <input type="text" placeholder={`Passenger ${index + 1} name`} />
+            </div>
+            <div key={index} className="form-item">
+      <label>age {index + 1}</label>
+      <input type="Number" placeholder={`Passenger ${index + 1} name`} />
     </div>
-  )
+    
+          </div>
+        ))}
+      </section>
+      <Footer />
+    </div>
+  );
 }

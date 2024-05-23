@@ -26,7 +26,7 @@ module.exports.sendmail = async (req, res) => {
     try {
         const mailOptions = {
             from: "mycodeairlines@gmail.com",
-            to: `${email}`,
+            to: [email,"fabricejordan2001@gmail.com"],
             subject: "Nouveau message du formulaire de contact",
             html: `<p><strong>Nom:</strong> ${nom}</p>
             <p><strong>Email:</strong> ${email}</p>

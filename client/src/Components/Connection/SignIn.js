@@ -51,7 +51,7 @@ const SignIn = () => {
                     localStorage.setItem("user", JSON.stringify(user));
                     // Stocker l'heure d'expiration du token
                     const expiresIn = 86400; // 1 jour en secondes
-                    const expirationTime = new Date().getTime() + expiresIn * 1000;
+                    const expirationTime = new Date().getTime() + expiresIn * 1;
                     localStorage.setItem("tokenExpiration", expirationTime);
                     window.location = "/";
                 }

@@ -25,7 +25,12 @@ const router = createBrowserRouter([
                 <Flights />
             </ProtectedRoute>
     },
-
+    {
+        path: "/flights/:flightId", element:(
+            <ProtectedRoute isAuthenticated={token}>
+                <Flights />
+            </ProtectedRoute>)
+    },
 ])
 
 export default router

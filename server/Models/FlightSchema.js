@@ -9,6 +9,7 @@ const flightSchema = new mongoose.Schema({
   date_depart: { type: Date, required: true },
   date_arrivee: { type: Date, required: true },
   distance: { type: Number, required: true },
+  place: {type:Number ,required:true},
   dure:{type:Number , required :true}
 },{timestamps:true}
 );

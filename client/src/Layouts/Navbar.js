@@ -3,16 +3,18 @@ import "../Assets/Styles/navbar.css"
 import { useState , useEffect } from 'react';
 
 
-import { Link ,useLocation} from 'react-router-dom';
+import { Link ,useLocation ,useParams} from 'react-router-dom';
 import { CgProfile } from "react-icons/cg";
 
 export default function Navbar() {
   const location = useLocation();
+  const { flightId } = useParams();
+
   const [mainColor, setMainColor] = useState('#00a9e6'); // Couleur par défaut
 
   useEffect(() => {
     // Mettez à jour la couleur en fonction de la route actuelle
-    if (location.pathname === '/flights') {
+    if ((location.pathname === '/flights' )||( location.pathname=== `/flights/${flightId}`) ) {
       setMainColor('#C08B7D'); // Exemple de couleur pour la route "/about"
     }
   }, [location.pathname]);
@@ -22,7 +24,7 @@ export default function Navbar() {
     <div className='nav-bar-container'>
     <div className='navbar'>
       <div className="logo-content">
-          <img src="logo.png" alt="logo" />
+          <img src="/logo.png" alt="logo" />
       </div>
       <div className="nav-item">
         <ul>

@@ -1,0 +1,11 @@
+.passager-container{
+    margin: 3% 2% 3% 2%;
+}
+.form-passager{
+    display: flex;
+}
+.passgaer-button{
+    margin-left: 38%;
+    margin-top: 2%;
+    margin-bottom: 3%;
+}

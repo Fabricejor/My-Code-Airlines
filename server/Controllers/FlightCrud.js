@@ -39,6 +39,7 @@ module.exports.addFlight = async (req,res) =>{
             airport_end,
             date_depart,
             date_arrivee,
+            place,
             distance,
             dure } = req.body;
 
@@ -48,6 +49,7 @@ module.exports.addFlight = async (req,res) =>{
             airport_end,
             date_depart,
             date_arrivee,
+            place,
             distance,
             dure
         })

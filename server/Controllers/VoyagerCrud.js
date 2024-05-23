@@ -37,23 +37,13 @@ module.exports.addVoyager = async (req,res) =>{
         const { 
             nom,
             numPassport,
-            numeroSiege,
-            age,
-            dateNaissance,
-            id_user,
-            flight_id,
-            ticket
+            age
             } = req.body;
 
         const newVoyager = new Voyager({
             nom,
             numPassport,
-            numeroSiege,
             age,
-            dateNaissance,
-            id_user,
-            flight_id,
-            ticket
         })
         const savedFly = await newVoyager.save();
         res.status(201).json(savedFly);
