@@ -35,7 +35,7 @@ export default function Flights() {
         try {
           const response = await axios.get(`http://localhost:5000/api/findFlight/${flightId}`);
           setFlightDetails(response.data);
-          console.log(flightDetails.compagnie);
+          console.log(flightDetails.place);
         } catch (error) {
           console.error("Erreur lors de la récupération des détails du vol", error);
         }
@@ -68,7 +68,7 @@ export default function Flights() {
             <input
               type="Number"
               min={1}
-              max={3}
+              max={flightDetails.place}
               placeholder="Number of passager"
               value={num}
               onChange={(e) => setNum(e.target.value)}

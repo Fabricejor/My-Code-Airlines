@@ -298,7 +298,7 @@ export default function Home() {
         "http://localhost:5000/api/searchFlight",
         { params: searchData }
       );
-      setFlightResults(response.data); // Mettez à jour l'état avec les résultats
+      setFlightResults(response.data.slice(-10)); // Mettez à jour l'état avec les résultats
     } catch (error) {
       console.error("Erreur lors de la récupération des vols :", error);
     }
@@ -393,6 +393,7 @@ export default function Home() {
       {/* //! Requete a afficher si les informations du formulaire on ete remplis */}
       <div className="flight-container">
         <ul className="flight-list">
+          <Slide>
           {flightResults.map((flight) => (
             <li className="flight-info" key={flight._id}>
               <div className="flight1">
@@ -415,7 +416,7 @@ export default function Home() {
                 Book{" "}
               </button>
             </li>
-          ))}
+          ))}</Slide>
         </ul>
       </div>
       {/* Section de pourquoi nous */}
