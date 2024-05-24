@@ -15,8 +15,6 @@ export default function Footer() {
     useEffect(() => {
       // Mettez à jour la couleur en fonction de la route actuelle
       if (location.pathname === '/flights' || location.pathname=== `/flights/${flightId}` ) {
-        console.log(flightId);
-        console.log(location.pathname);
         setMainColor('#C08B7D'); // Exemple de couleur pour la route "/about"
       }
     }, [location.pathname]);

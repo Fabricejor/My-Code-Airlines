@@ -234,6 +234,7 @@ export default function Home() {
     "Sanaa - Yémen",
     "Lusaka - Zambie",
     "Harare - Zimbabwe",
+    "New York-États-Unis",
   ]);
 
   const [inputValue1, setInputValue1] = useState("");
@@ -394,7 +395,7 @@ export default function Home() {
       <div className="flight-container">
         <ul className="flight-list">
           <Slide>
-          {flightResults.map((flight) => (
+          {flightResults .filter(flight => flight.place > 0).map((flight) => (
             <li className="flight-info" key={flight._id}>
               <div className="flight1">
                 <div className="compagnie">{flight.compagnie}</div>{" "}
@@ -408,6 +409,10 @@ export default function Home() {
                   {formatDate(flight.date_depart)}{" "}
                 </div>
                 <div className="dure"> duré: {flight.dure} h</div>
+              </div>
+              <div className="price">
+                <p className="dure">price:</p>
+                <div><p>{flight.prix} xof</p></div>
               </div>
               <button
                 className="book"

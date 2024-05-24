@@ -19,6 +19,7 @@ router.get("/allFlight",FlightCrud.getFlight);
 router.get("/findFlight/:id",FlightCrud.oneFlight);
 router.post("/addFlight",FlightCrud.addFlight);
 router.delete("/deleteFlight/:id", FlightCrud.deleteFlight);
+router.post("/addManyFlights", FlightCrud.addManyFlights);
 
 //ticket geestion
 router.get("/allTicket",TicketCrud.getTicket);
@@ -31,6 +32,7 @@ router.get("/searchFlight", FlightCrud.searchFlight);
 router.get("/allVoyager",VoyagerCrud.getVoyager);
 router.get("/findVoyager/:id",VoyagerCrud.oneVoyager);
 router.post("/addVoyager",VoyagerCrud.addVoyager);
+router.post("/addManyVoyager",VoyagerCrud.addManyVoyager);
 router.delete("/deleteVoyager/:id", VoyagerCrud.deleteVoyager);
 
 //mails gestions

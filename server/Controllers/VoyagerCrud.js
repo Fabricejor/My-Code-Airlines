@@ -1,7 +1,7 @@
 const Voyager = require('../Models/VoyagerSchema');
 const express = require('express');
 
-//tous les vols
+//tous les voyagers
 module.exports.getVoyager = async (req, res, next) => {
     try {
         const voyager = await Voyager.find();
@@ -11,7 +11,7 @@ module.exports.getVoyager = async (req, res, next) => {
        }
 }
 
-//un seul vols
+//un seul voyagers
 module.exports.oneVoyager = async (req,res )=>{
     try {
         const id = req.params.id; // Récupérer l'ID à partir des paramètres de l'URL
@@ -30,7 +30,7 @@ module.exports.oneVoyager = async (req,res )=>{
         res.status(400).json({ message: error.message });
        }
 }
-//poster un  vols
+//poster un  voyagers
 module.exports.addVoyager = async (req,res) =>{
     try {
         //destructuration pour eviter une repetition
@@ -66,4 +66,21 @@ module.exports.deleteVoyager = async (req ,res ) => {
        } catch (error) {
         res.status(400).json({ message: error.message });
        }
+}
+
+// Créer plusieurs voyageurs en même temps
+module.exports.addManyVoyager = async (req, res) => {
+    try {
+        const voyagers = req.body; // Supposons que req.body est un tableau d'objets voyageurs
+
+        if (!Array.isArray(voyagers) || voyagers.length === 0) {
+            return res.status(400).json({ message: "La requête doit contenir un tableau de voyageurs" });
+        }
+
+        const newVoyagers = await Voyager.insertMany(voyagers);
+        res.status(201).json(newVoyagers);
+    } catch (error) {
+        console.log(error);
+        res.status(400).json({ message: error.message });
+    }
 }

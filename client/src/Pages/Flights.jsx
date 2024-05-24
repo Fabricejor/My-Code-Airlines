@@ -35,7 +35,7 @@ export default function Flights() {
         try {
           const response = await axios.get(`http://localhost:5000/api/findFlight/${flightId}`);
           setFlightDetails(response.data);
-          console.log(flightDetails.place);
+        
         } catch (error) {
           console.error("Erreur lors de la récupération des détails du vol", error);
         }
@@ -44,6 +44,12 @@ export default function Flights() {
       fetchFlightDetails();
     }
   }, [flightId]);
+  useEffect(() => {
+    // Vous pouvez vérifier si flightDetails n'est pas null avant d'essayer d'accéder à sa propriété 'place'
+    if (flightDetails && flightDetails.place) {
+      console.log(flightDetails.place + ' ' + flightDetails.compagnie);
+    }
+  }, [flightDetails]);
   //traitement donnés passager plus item
   const [num, setNum] = useState(0);
   return (
@@ -62,13 +68,14 @@ export default function Flights() {
             Embark on your journey to secure the ideal getaway.
           </h1>
         </div>
+        {/* ce formulaire génere le nombre de input necessaire pour enregistrer les */}
         <form className="form-container">
           <div className="form-item">
             <label>Passagers Numbers</label>
             <input
               type="Number"
               min={1}
-              max={flightDetails.place}
+              max={3}
               placeholder="Number of passager"
               value={num}
               onChange={(e) => setNum(e.target.value)}
@@ -76,6 +83,7 @@ export default function Flights() {
             />
           </div>
           <div className="button-from">
+            {/* Ajouter une fonction dans le button pour traiter les donnés du deuxieme formulaire */}
             <button
               style={{ background: mainColor, color: "white" }}
             >
@@ -85,20 +93,21 @@ export default function Flights() {
           </div>
         </form>
       </div>
+      {/* renvoyer chaque element dans un tableau qui sera dans enrigstré dans  */}
       <section className="passager-container">
         {Array.from({ length:  Math.min(num, 3)  }).map((_, index) => (
-          <div className="form-passager">
-            <div key={index} className="form-item">
+          <div className="form-passager"key={index} >
+            <div className="form-item">
               <label>Passager {index + 1}</label>
-              <input type="text" placeholder={`Passenger ${index + 1} name`} />
+              <input type="text" placeholder={`Passenger ${index + 1} name`} required />
             </div>
-            <div key={index} className="form-item">
+            <div  className="form-item">
               <label>passport {index + 1}</label>
-              <input type="text" placeholder={`Passenger ${index + 1} name`} />
+              <input type="text" placeholder={`Passenger ${index + 1} PassPort ID`} required/>
             </div>
-            <div key={index} className="form-item">
+            <div  className="form-item">
       <label>age {index + 1}</label>
-      <input type="Number" placeholder={`Passenger ${index + 1} name`} />
+      <input type="Number" min={5} max={90} placeholder={`Passenger ${index + 1} year old`} required />
     </div>
     
           </div>

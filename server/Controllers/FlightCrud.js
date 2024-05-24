@@ -40,6 +40,7 @@ module.exports.addFlight = async (req,res) =>{
             date_depart,
             date_arrivee,
             place,
+            prix,
             distance,
             dure } = req.body;
 
@@ -50,6 +51,7 @@ module.exports.addFlight = async (req,res) =>{
             date_depart,
             date_arrivee,
             place,
+            prix,
             distance,
             dure
         })
@@ -88,8 +90,6 @@ module.exports.searchFlight = async (req, res) => {
             return `${year}-${month}-${day}`;
           };
           const formattedDate = formatDate(date_depart);
-          console.log("new format: "+formattedDate);
-          console.log("type :" + typeof(formattedDate));
         // Utiliser une expression régulière pour rechercher les vols qui contiennent les aéroports spécifiés
         const flights = await Flight.find({
             airport_start: { $regex: airport_start, $options: "i" }, // Utilisation de l'option "i" pour une recherche insensible à la casse
@@ -107,5 +107,22 @@ module.exports.searchFlight = async (req, res) => {
     } catch (error) {
         // Si une erreur se produit, renvoyer un statut 500 avec le message d'erreur
         res.status(500).json({ message: error.message });
+    }
+}
+
+// Ajouter plusieurs vols en même temps
+module.exports.addManyFlights = async (req, res) => {
+    try {
+        const flights = req.body; // Supposons que req.body est un tableau d'objets vols
+
+        if (!Array.isArray(flights) || flights.length === 0) {
+            return res.status(400).json({ message: "La requête doit contenir un tableau de vols" });
+        }
+
+        const newFlights = await Flight.insertMany(flights);
+        res.status(201).json(newFlights);
+    } catch (error) {
+        console.log(error);
+        res.status(400).json({ message: error.message });
     }
 }
