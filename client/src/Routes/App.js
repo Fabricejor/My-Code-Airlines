@@ -6,6 +6,7 @@ import Home from "../Pages/Home";
 import Contact from "../Pages/Contact";
 import SignUp from "../Components/Connection/SignUp";
 import Flights from "../Pages/Flights";
+import Profil from "../Pages/Profil";
 // import Test from "../Pages/Test";
 
 const token = localStorage.getItem("token");
@@ -30,6 +31,12 @@ const router = createBrowserRouter([
             <ProtectedRoute isAuthenticated={token}>
                 <Flights />
             </ProtectedRoute>)
+    },
+    {
+        path: "/profil", element:
+            <ProtectedRoute isAuthenticated={token}>
+                <Profil />
+            </ProtectedRoute>
     },
 ])
 

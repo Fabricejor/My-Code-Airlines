@@ -1,5 +1,4 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React,{ useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import Navbar from "../Layouts/Navbar";
 import Footer from "../Layouts/Footer";
@@ -9,6 +8,8 @@ import Preloader from "../Components/Preloader/Preloader";
 import axios from 'axios';
 
 import { GoBookmark } from "react-icons/go";
+import { IoIosArrowDown } from "react-icons/io";
+
 import "../Assets/Styles/flight.css";
 import { useParams } from "react-router-dom";
 
@@ -17,7 +18,22 @@ export default function Flights() {
   const location = useLocation();
   const [mainColor, setMainColor] = useState("#00a9e6"); // Couleur par défaut
   const [flightDetails, setFlightDetails] = useState(null); // État pour les détails du vol
+  const [passengers, setPassengers] = useState([]);
+    const [travelType, setTravelType] = useState("one-way");
+    const [classe, setClasse] = useState("economique");
+    const [promoCode, setPromoCode] = useState("");
+    const userString = localStorage.getItem("user");
+    let userId = null;
 
+    if (userString) {
+        const user = JSON.parse(userString);
+        userId = user._id;
+        console.log("User ID:", userId);
+    } else {
+        console.log("No user found in localStorage");
+    }
+    //
+    
   useEffect(() => {
     // Mettez à jour la couleur en fonction de la route actuelle
     if (
@@ -52,6 +68,37 @@ export default function Flights() {
   }, [flightDetails]);
   //traitement donnés passager plus item
   const [num, setNum] = useState(0);
+   // Gestion des changements dans le formulaire des passagers
+   const handlePassengerChange = (index, field, value) => {
+    const newPassengers = [...passengers];
+    newPassengers[index] = { ...newPassengers[index], [field]: value };
+    setPassengers(newPassengers);
+};
+
+const handleFinishBooking = async (e) => {
+    e.preventDefault();
+    const tickets = passengers.map((passenger) => ({
+        id_user: userId,
+        flight_id: flightId,
+        numTicket: Math.floor(Math.random() * 1000000),
+        nom: passenger.name,
+        numPassport: passenger.passport,
+        age: parseInt(passenger.age),
+        type: travelType,
+        classe: classe,
+        prix: flightDetails?.prix,
+        destination: `${flightDetails?.airport_start} - ${flightDetails?.airport_end}`,
+        promotion: promoCode
+    }));
+
+    try {
+        const response = await axios.post('http://localhost:5000/api/addManyTickets',  tickets );
+        console.log("Tickets ajoutés avec succès :", response.data);
+    } catch (error) {
+        console.error("Erreur lors de l'ajout des tickets", error);
+    }
+};
+// console.log(passengers[0]?.name);
   return (
     <div>
       <Preloader />
@@ -69,7 +116,7 @@ export default function Flights() {
           </h1>
         </div>
         {/* ce formulaire génere le nombre de input necessaire pour enregistrer les */}
-        <form className="form-container">
+        <form className="form-container"onSubmit={handleFinishBooking}>
           <div className="form-item">
             <label>Passagers Numbers</label>
             <input
@@ -78,15 +125,44 @@ export default function Flights() {
               max={3}
               placeholder="Number of passager"
               value={num}
-              onChange={(e) => setNum(e.target.value)}
+              onChange={(e) => {
+                setNum(e.target.value);
+                setPassengers(Array.from({ length: e.target.value }, () => ({})));
+            }}
               required
             />
           </div>
-          <div className="button-from">
+          <div className="form-item">
+            <label>
+              Travel type <IoIosArrowDown />{" "}
+            </label>
+            <select type="select" value={travelType} onChange={(e) => setTravelType(e.target.value)} name="type" placeholder="type of travel">
+              <option value="one-way">One Way</option>
+              <option value="round-trip">Round-Trip</option>
+            </select>
+          </div>
+          <div className="form-item">
+            <label>
+              Class
+            </label>
+            <select type="select" name="classe" placeholder="class travel"  value={classe} onChange={(e) => setClasse(e.target.value)}>
+              <option value="economique">Economic class</option>
+              <option value="affaire">Business Class</option>
+              <option value="première">Fisrt Class</option>
+            </select>
+          </div>
+          <div className="form-item">
+            <label>Promo Code</label>
+            <input
+              type="text"
+              placeholder="Any promotional code?"
+              value={promoCode}
+              onChange={(e) => setPromoCode(e.target.value)}
+            />
+          </div>
+          <div className="button-from" type="submit">
             {/* Ajouter une fonction dans le button pour traiter les donnés du deuxieme formulaire */}
-            <button
-              style={{ background: mainColor, color: "white" }}
-            >
+            <button style={{ background: mainColor, color: "white" }}>
               finish Booking
               <GoBookmark />
             </button>
@@ -99,15 +175,15 @@ export default function Flights() {
           <div className="form-passager"key={index} >
             <div className="form-item">
               <label>Passager {index + 1}</label>
-              <input type="text" placeholder={`Passenger ${index + 1} name`} required />
+              <input type="text" placeholder={`Passenger ${index + 1} name`}  value={passengers[index]?.name || ""}  onChange={(e) => handlePassengerChange(index, 'name', e.target.value)} required />
             </div>
             <div  className="form-item">
               <label>passport {index + 1}</label>
-              <input type="text" placeholder={`Passenger ${index + 1} PassPort ID`} required/>
+              <input type="text" placeholder={`Passenger ${index + 1} PassPort ID`} value={passengers[index]?.passport || ""} onChange={(e) => handlePassengerChange(index, 'passport', e.target.value)} required/>
             </div>
             <div  className="form-item">
       <label>age {index + 1}</label>
-      <input type="Number" min={5} max={90} placeholder={`Passenger ${index + 1} year old`} required />
+      <input type="Number" min={5} max={90} placeholder={`Passenger ${index + 1} year old`} value={passengers[index]?.age || ""}  onChange={(e) => handlePassengerChange(index, 'age', e.target.value)}required />
     </div>
     
           </div>

@@ -3,7 +3,6 @@ const validator = require('validator');
 
 const TicketSchema = new mongoose.Schema({
   id_user: { type: mongoose.Schema.Types.ObjectId, ref: 'user', required: true },
-  id_passager: { type: mongoose.Schema.Types.ObjectId, ref: 'voyager', required: true },
   flight_id: { type: mongoose.Schema.Types.ObjectId, ref: 'flight', required: true },
   numTicket: { type: String, required: true,max:10 },
   nom: { type: String, required: true },
