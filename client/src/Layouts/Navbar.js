@@ -33,6 +33,15 @@ export default function Navbar() {
   }, [location.pathname]);
 
   const token = localStorage.getItem("token");
+
+  const scrollToFooter = (event) => {
+    event.preventDefault();
+    const footer = document.getElementById('footer-section');
+    if (footer) {
+      footer.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className='nav-bar-container'>
     <div className='navbar'>
@@ -44,7 +53,7 @@ export default function Navbar() {
           <li ><Link  className="customLink" to={"/"}>Home</Link></li>
           <li ><Link  className="customLink" to={"/flights"}>Flights</Link></li>
           <li ><Link  className="customLink" to={"/contact"}>Contact Us</Link></li>
-          <li ><Link  className="customLink" to={"/test"}>About</Link></li>
+          <li ><Link  className="customLink" onClick={scrollToFooter}>About</Link></li>
         </ul>
       </div>
       <div className='connection'>

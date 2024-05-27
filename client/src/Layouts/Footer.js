@@ -1,6 +1,6 @@
 import React from 'react'
 import "../Assets/Styles/footer.css"
-import { FaLinkedinIn ,FaFacebookF } from "react-icons/fa";
+import { FaLinkedinIn ,FaInstagram  ,FaGithub } from "react-icons/fa";
 import { BsTwitterX } from "react-icons/bs";
 import { FaArrowRight } from "react-icons/fa";
 import { Link ,useLocation ,useParams} from 'react-router-dom';
@@ -20,15 +20,16 @@ export default function Footer() {
     }, [location.pathname]);
     return (
         <>
-            <footer >
+            <footer  id="footer-section" >
             <div className='container-foot'>
                 <div className='social'>
                     <img src="/logo.png" alt="logo" />
                     <p>Hello, we are Lift Media. Our goal is to translate the positive effects from revolutionizing how companies engage with their clients & their team.</p>
                     <div className='social-icon'>
-                        <FaLinkedinIn className='icons' />
-                        <BsTwitterX   className='icons'/>
-                        <FaFacebookF  className='icons'/>
+                        <FaLinkedinIn onClick={()=>{window.open("https://www.linkedin.com/in/fabrice-ramos-4517831bb/")}} className='icons link' />
+                        <BsTwitterX   className='icons twit'/>
+                        <FaInstagram onClick={()=>{window.open("https://github.com/Fabricejor")}}  className='icons insta'/>
+                        <FaGithub  onClick={()=>{window.open("https://github.com/Fabricejor")}} className='icons git'/>
                     </div>
                 </div>
                 <div className='Products'>
@@ -58,10 +59,10 @@ export default function Footer() {
                 </div>
                 <div className='newsletter'>
                     <h3>newsletter</h3>
-                    <div className='input-newsletter'>
-                    <input type="email"  placeholder='Email to subscribe' />
-                    <FaArrowRight style={{backgroundColor:mainColor}} className='btn-newsletter'/>
-                    </div>
+                    <form className='input-newsletter'>
+                    <input type="email" minLength={10} maxLength={100} required placeholder='Email to subscribe' />
+                    <button className='btn-newsletter'style={{backgroundColor:mainColor}}><FaArrowRight  /></button>
+                    </form>
                     <p>Hello, we are Lift Media. Our goal is to translate the positive effects from revolutionizing how companies engage with their clients & their team.</p>
                 </div>
             </div>
@@ -70,6 +71,10 @@ export default function Footer() {
                 <p>terms</p>
                 <p>privacy</p>
                 <p>cookies</p>
+                <p>&#169;Fabricejor - 2024</p>
+            </div><hr/>
+            <div className='terms'>
+                <a href="https://github.com/Fabricejor" target='_blank'></a>
             </div>
             </footer>
         </>

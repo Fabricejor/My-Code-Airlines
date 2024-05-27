@@ -3,6 +3,7 @@ const Auth = require("../Controllers/Auth")
 const FlightCrud = require("../Controllers/FlightCrud");
 const TicketCrud = require("../Controllers/TicketCrud");
 const VoyagerCrud = require("../Controllers/VoyagerCrud");
+const NewsLetter = require("../controllers/NewsLetterCrud");
 
 //mail controller
 const contact = require("../Controllers/mails/contact");
@@ -39,6 +40,9 @@ router.post("/addVoyager",VoyagerCrud.addVoyager);
 router.post("/addManyVoyager",VoyagerCrud.addManyVoyager);
 router.delete("/deleteVoyager/:id", VoyagerCrud.deleteVoyager);
 
+//newsletter subcribers
+router.post("/subcribers",NewsLetter.Subscribe)
+router.get("/getSubcribers",NewsLetter.getAllsubscribers)
 //mails gestions
 router.post('/sendmail', contact.sendmail);
 

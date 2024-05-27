@@ -42,7 +42,24 @@ footer{
     height: auto;
     padding: 7%;
     border-radius: 100%;
+    transition: 1s;
     /* margin-left: 15px; */
+}
+.social-icon .icons:hover{
+    transform: scale(1.2);
+}
+.link:hover{
+    background-color: #0073b1;
+    color: #fff;
+}
+.twit:hover{
+    background-color: #000;
+}
+.insta:hover{
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+}
+.git:hover{
+    background-color: black;
 }
 .Products {
     margin-left: 10%;
