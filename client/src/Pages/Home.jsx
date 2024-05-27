@@ -1,6 +1,6 @@
 //modules front end
 import React, { useRef, useCallback } from "react";
-import { Fade, Slide, Zoom } from "react-awesome-reveal";
+import { Fade, Slide, Zoom ,Bounce } from "react-awesome-reveal";
 import { useState } from "react";
 import axios from "axios";
 
@@ -21,6 +21,7 @@ import { ImArrowRight } from "react-icons/im";
 import { useNavigate } from "react-router-dom";
 export default function Home() {
   const [inputType, setInputType] = useState("text");
+  const [errorMessage, setErrorMessage] = useState(''); // État local pour le message d'erreur
 
   const handleInputFocus = () => {
     setInputType("date");
@@ -300,8 +301,12 @@ export default function Home() {
         { params: searchData }
       );
       setFlightResults(response.data.slice(-10)); // Mettez à jour l'état avec les résultats
+      setErrorMessage('');
     } catch (error) {
       console.error("Erreur lors de la récupération des vols :", error);
+      setErrorMessage(error.response.data.message);
+      setFlightResults([]);
+      console.log(errorMessage);
     }
   };
   const formatDate = (dateString) => {
@@ -313,6 +318,7 @@ export default function Home() {
   };
   //test
   const navigate = useNavigate();
+  
   return (
     <>
       <Preloader />
@@ -393,6 +399,7 @@ export default function Home() {
       </div>
       {/* //! Requete a afficher si les informations du formulaire on ete remplis */}
       <div className="flight-container">
+      {errorMessage && <Bounce><p style={{ color: 'red' }}>{errorMessage}</p></Bounce>}
         <ul className="flight-list">
           <Slide>
           {flightResults .filter(flight => flight.place > 0).map((flight) => (
@@ -416,7 +423,7 @@ export default function Home() {
               </div>
               <button
                 className="book"
-                onClick={() => navigate(`/flights/${flight._id}`)}
+                onClick={()=>{const token = localStorage.getItem("token");if(token){navigate(`/flights/${flight._id}`)}else{alert("Vous devez etre connecte avant de faire de reservation");window.location="/Signin";}}}
               >
                 Book{" "}
               </button>

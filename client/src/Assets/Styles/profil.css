@@ -1,0 +1,135 @@
+.profil-info{
+    height:60vh;
+    width: 92%;
+    margin-left: 4%;
+    margin-right: 4%;
+    /* background-color: #F6F6F7; */
+    background-color: #e2f6fe;
+    padding-top: 130px;
+    /* display: flex;
+    align-items: center; /* Centre verticalement */
+    /* justify-content: center; Centre horizontalement */
+    /* flex-direction: column; */ 
+}
+.reservations-info{
+    background-color: #e2f6fe;
+    width: 92%;
+    margin-left: 4%;
+    margin-right: 4%
+}
+.profil-title{
+    font-size: 2.5rem;
+    line-height: 1.05;
+    font-family: "Dm sans", sans-serif;
+    text-transform: none;
+    font-weight: 700;
+    color: #00a9e6;
+    margin-left: 35%;
+    text-decoration: overline;
+}
+.profil-info hr , .reservations-info hr{
+    border: 1px solid #00a9e6;
+    margin-top: 2%;
+}
+.profil-card{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2%;
+}
+.personal-info , .credit-card{
+    border: #00a9e6 1px solid;
+    border-radius: 12px;
+    background-color: #fff;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+.personal-info{
+    width: 60%;
+    height: 40vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #00a9e6;
+    transition: 1s;
+    cursor: pointer;
+}
+.personal-info:hover{
+    transform: scale(0.95);
+}
+.personal-info .infos h2 , .personal-info  .infos h4{
+    font-family: "Dm Sans", sans-serif;
+    text-transform: capitalize;
+    font-weight: 800;
+    margin-left: 2%;
+    letter-spacing: 2px;
+    
+}
+.img-profil{
+    /* width: 50%; */
+    right: 0;
+}
+.img-profil img{
+    width: 200px;
+    border: 2px solid #00a9e6;
+    border-radius: 100%;
+    transition: 1s;
+    cursor: pointer;
+}
+.img-profil img:hover{
+    transform: scale(0.8);
+}
+.credit-card{
+    width: 25%;
+    height: 40vh;
+    display: flex;
+    flex-direction: column;
+    transition: 1s;
+    cursor: pointer;
+}
+.credit-card:hover{
+    transform: scale(0.95);
+
+}
+.credit-card p{
+    margin-top: 8px;
+    text-align: center;
+    color: #00a9e6;
+}
+.credit-card img{
+    max-height: 148px;
+    border-radius: 12px;
+    height: auto;
+    border: 0;
+    vertical-align: middle;
+}
+
+/* table css */
+.table-container{
+    width: 100%;
+    margin-top: 2%;
+    overflow-x:auto;
+}
+.table-container table{
+    width: 90%;
+    border: 1px solid #00a9e6;
+    border-radius: 12px;
+    border-spacing: 0;
+    border-collapse: collapse;
+    font-family: "Dm sans",sans-serif;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+  }
+.table-container table thead  {
+    background-color: #00a9e6;
+}
+.table-container table tbody tr:nth-child(odd){
+    background-color: #e2f6fe;
+}
+.table-container table tbody  tr:nth-child(odd){
+    background-color: #cdffea;
+
+}

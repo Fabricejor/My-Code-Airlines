@@ -5,17 +5,30 @@ import { useState , useEffect } from 'react';
 
 import { Link ,useLocation ,useParams} from 'react-router-dom';
 import { CgProfile } from "react-icons/cg";
+import { FaPowerOff } from "react-icons/fa";
 
 export default function Navbar() {
   const location = useLocation();
   const { flightId } = useParams();
 
   const [mainColor, setMainColor] = useState('#00a9e6'); // Couleur par défaut
-
+  const [profilIcon, setProfilIcon] = useState('');
   useEffect(() => {
     // Mettez à jour la couleur en fonction de la route actuelle
     if ((location.pathname === '/flights' )||( location.pathname=== `/flights/${flightId}`) ) {
       setMainColor('#C08B7D'); // Exemple de couleur pour la route "/about"
+    }
+    if (location.pathname===("/profil")){
+      const handleClose = () => {
+        localStorage.removeItem("token")
+        localStorage.removeItem("tokenExpiration")
+        localStorage.removeItem("user")
+
+        window.alert("Merci de votre visite au plaisir de vous revoir ");
+      }
+      setProfilIcon(<Link title='LOG OUT' onClick={handleClose} style={{marginLeft:"200px"}} to={'/'}><button className='profile' style={{backgroundColor:mainColor}} > <FaPowerOff   className='profil-icon' /></button></Link>);
+    }else{
+      setProfilIcon(<Link title='Profils' style={{marginLeft:"200px"}} to={'/profil'}><button className='profile' style={{backgroundColor:mainColor}} > <CgProfile  className='profil-icon' /></button></Link>);
     }
   }, [location.pathname]);
 
@@ -37,7 +50,7 @@ export default function Navbar() {
       <div className='connection'>
         {token ? (
         <>
-        <Link title='Profils' style={{marginLeft:"200px"}} to={'/profil'}><button className='profile' style={{backgroundColor:mainColor}} > <CgProfile  className='profil-icon' /></button></Link>
+          {profilIcon}
         </>) :(<><button className='Signin'><Link  className="customLink" to={"/Signin"}>Sign In</Link></button>
           <button className='Signup'><Link  className="customLink" to={"/Signup"}>Sign up</Link></button></>)}
           

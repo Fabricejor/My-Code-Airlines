@@ -67,6 +67,48 @@ module.exports.signIn = async (req, res) => {
 }
 
 
+module.exports.EditUser = async (req, res) => {
+    try {
+        const { id } = req.params; // Récupérer l'ID de l'utilisateur à partir des paramètres de l'URL
+        const updatedData = req.body; // Les nouvelles informations de l'utilisateur à partir du corps de la requête
+
+        // Vérifier si l'utilisateur existe
+        const user = await User.findById(id);
+        if (!user) {
+            return res.status(404).json({ message: "Utilisateur non trouvé" });
+        }
+
+        // Si le mot de passe est fourni dans les données mises à jour, il doit être crypté
+        if (updatedData.mdp) {
+            const salt = await bcrypt.genSalt(10);
+            updatedData.mdp = await bcrypt.hash(updatedData.mdp, salt);
+        }
+
+        // Mettre à jour l'utilisateur avec les nouvelles données
+        const updatedUser = await User.findByIdAndUpdate(id, updatedData, { new: true });
+
+        res.status(200).json({ message: "Informations de l'utilisateur mises à jour avec succès", user: updatedUser });
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({ message: "Erreur interne du serveur", error });
+    }
+}
+
+module.exports.GetAllUser = async (req, res) => {
+    try {
+        const users = await User.find(); // Récupérer tous les utilisateurs
+
+        if (!users.length) {
+            return res.status(404).json({ message: "Aucun utilisateur trouvé" });
+        }
+
+        res.status(200).json(users);
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({ message: "Erreur interne du serveur", error });
+    }
+}
+
 
 // Commentaires
 // Ce code contient deux fonctions, `signUP` et `signIn`, qui permettent de gérer les opérations d'inscription

@@ -56,7 +56,7 @@ const handleSubmit = async (e) => {
       <input type="email" name='email' value={formData.email} onChange={handleChange} placeholder="Email"required/>
       <input type="number"name='tel' value={formData.tel} onChange={handleChange} placeholder="Number"required/>
       <input type="text" name='numPassport' value={formData.numPassport} onChange={handleChange} placeholder="Passport ID"required/>
-      <input type="number" name='age' value={formData.age} onChange={handleChange} placeholder="age"required/>
+      <input type="number" name='age' min={15} value={formData.age} onChange={handleChange} placeholder="age"required/>
       <input type="password" name='mdp' value={formData.mdp}  onChange={handleChange} placeholder="Password"required/>
       {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
       <button type='submit'>Sign up</button>

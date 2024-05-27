@@ -99,3 +99,25 @@ module.exports.addManyTickets = async (req, res) => {
         res.status(400).json({ message: error.message });
     }
 }
+//recherchers les tickets correspondant en fonctions de l'id du user
+// Renvoyer tous les résultats de la table Ticket en fonction de l'id_user
+module.exports.getTicketsByUserId = async (req, res) => {
+    try {
+        const id_user = req.params.id; // Récupérer l'ID de l'utilisateur à partir des paramètres de l'URL
+
+        const tickets = await Ticket.find({ id_user })
+        .sort({ createdAt: -1 }) // Trier par date de création décroissante
+            .limit(50); 
+
+        // Si aucun ticket n'est trouvé, renvoyer un message approprié
+        if (!tickets.length) {
+            return res.status(404).json({ message: "Aucun ticket trouvé pour cet utilisateur" });
+        }
+
+        // Renvoyer les tickets trouvés
+        res.json(tickets);
+    } catch (error) {
+        // Si une erreur se produit, renvoyer un statut 400 (Bad Request) avec le message d'erreur
+        res.status(400).json({ message: error.message });
+    }
+};

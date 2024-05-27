@@ -12,6 +12,8 @@ const contact = require("../Controllers/mails/contact");
 //Authentication with JWT
 router.post("/signup", Auth.signUP) ;
 router.post("/signin", Auth.signIn);
+router.get("/allUsers", Auth.GetAllUser);
+router.put("/Edituser/:id",Auth.EditUser)
 
 //flight api crud
 //! DONT FORGET THE SLASH /
@@ -28,6 +30,7 @@ router.post("/addTicket",TicketCrud.addTicket);
 router.delete("/deleteTicket/:id", TicketCrud.deleteTicket);
 router.get("/searchFlight", FlightCrud.searchFlight);
 router.post("/addManyTickets", TicketCrud.addManyTickets);
+router.get("/searchTicketsById/:id",TicketCrud.getTicketsByUserId);
 
 //Passager gestion
 router.get("/allVoyager",VoyagerCrud.getVoyager);

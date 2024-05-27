@@ -1,0 +1,106 @@
+
+.edit-container{
+    height:90vh;
+    width: 92%;
+    margin-left: 4%;
+    margin-right: 4%;
+    /* background-color: #F6F6F7; */
+    background-color: #e2f6fe;
+    padding-top: 130px;
+    /* margin-bottom: 4%; */
+    /* margin-bottom: 60px; */
+}
+.edit-container hr {
+    border: 1px solid #00a9e6;
+    margin-top: 2%;
+}
+.edit-container form{
+    margin-top: 2%;
+    width: 100%;
+    /* background-color: bisque; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    /* padding-top: 2%; */
+
+}
+.profil-form-edit {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 100%;
+    background-color: #fff;
+    /* margin-bottom: 2%; */
+    height: 60px;
+    border-radius:  12px  12px;
+    /* border: 0 0 1px 0 solid # */
+    border-bottom: 1px solid #373738;
+}
+.profil-form-edit label{
+    color: #0045B6;
+    font-style: "Dm sans",sans-serif;
+    font-weight:bold;
+    font-size: 1.125rem;
+}
+.edit-container input {
+    border: none;
+    color: gray;
+    /* background-color: rgb(249, 249, 249); */
+    font-weight: bolder;
+    font-size: large;
+    font-family: "Dm sans",sans-serif;
+    width: 40%;
+    height: 90%;
+    transition: 1s;
+    text-align: center;
+}
+.edit-container input:focus{
+    border: none;
+    outline: 1px ;
+    color: #00a9e6;
+}
+.form-btn-edit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1%;
+    /* background-color: red; */
+    width: 50%;
+    height: 100%;
+}
+.link-to-profil{
+    background-color: #0045B6;
+    text-decoration: none;
+    color: #fff;
+    font-family: "Dm sans",sans-serif;
+    font-size: 20px;
+    width: 20%;
+    text-align: center;
+    border-radius: 6px;
+    height: 100%;
+    transition: 1s ease-in-out;
+}
+.link-to-profil:hover{
+    transform: scale(0.8);
+    background-color: #627eac;
+
+}
+.form-btn-edit button{
+    cursor: pointer;
+    width: 20%;
+    height: 100%;
+    background-color: #E9E9EB;
+    font-family: "Dm sans",sans-serif;
+    font-size: 20px;
+    color: #a6a8b1;
+    transition: 1s ease-in-out;
+    border: none;
+    border-radius: 7px;
+}
+.form-btn-edit button:hover{
+    transform: scale(0.8);
+    background-color: #00e686;
+    color: #fff;
+}
