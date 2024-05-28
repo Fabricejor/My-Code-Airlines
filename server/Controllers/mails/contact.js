@@ -31,7 +31,8 @@ module.exports.sendmail = async (req, res) => {
             html: `<p><strong>Nom:</strong> ${nom}</p>
             <p><strong>Email:</strong> ${email}</p>
             <p><strong>Numéro:</strong> ${numero}</p>
-            <p><strong>Message:</strong> ${message}</p>`,
+            <p><strong>Message:</strong> ${message}</p>
+            <img src=""`,
 
             attachments: [ // les pieces jointes
                 {

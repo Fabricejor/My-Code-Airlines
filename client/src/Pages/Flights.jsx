@@ -24,11 +24,13 @@ export default function Flights() {
     const [promoCode, setPromoCode] = useState("");
     const userString = localStorage.getItem("user");
     let userId = null;
+    let userMail=null;
 
     if (userString) {
         const user = JSON.parse(userString);
         userId = user._id;
-        console.log("User ID:", userId);
+        userMail=user.email;
+        console.log("User ID:", userId , "Email:", userMail);
     } else {
         console.log("No user found in localStorage");
     }
@@ -94,6 +96,8 @@ const handleFinishBooking = async (e) => {
     try {
         const response = await axios.post('http://localhost:5000/api/addManyTickets',  tickets );
         console.log("Tickets ajoutés avec succès :", response.data);
+        window.alert('Réservation réussie');
+        window.location.href = '/profil';
     } catch (error) {
         console.error("Erreur lors de l'ajout des tickets", error);
     }
@@ -175,11 +179,11 @@ const handleFinishBooking = async (e) => {
           <div className="form-passager"key={index} >
             <div className="form-item">
               <label>Passager {index + 1}</label>
-              <input type="text" placeholder={`Passenger ${index + 1} name`}  value={passengers[index]?.name || ""}  onChange={(e) => handlePassengerChange(index, 'name', e.target.value)} required />
+              <input type="text" placeholder={`Passenger ${index + 1} name`} maxLength={100}  value={passengers[index]?.name || ""}  onChange={(e) => handlePassengerChange(index, 'name', e.target.value)} required />
             </div>
             <div  className="form-item">
               <label>passport {index + 1}</label>
-              <input type="text" placeholder={`Passenger ${index + 1} PassPort ID`} value={passengers[index]?.passport || ""} onChange={(e) => handlePassengerChange(index, 'passport', e.target.value)} required/>
+              <input type="text" placeholder={`Passenger ${index + 1} PassPort ID`} minLength={4} value={passengers[index]?.passport || ""} onChange={(e) => handlePassengerChange(index, 'passport', e.target.value)} required/>
             </div>
             <div  className="form-item">
       <label>age {index + 1}</label>

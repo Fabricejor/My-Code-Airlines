@@ -28,7 +28,7 @@ export default function Footer() {
                     <div className='social-icon'>
                         <FaLinkedinIn onClick={()=>{window.open("https://www.linkedin.com/in/fabrice-ramos-4517831bb/")}} className='icons link' />
                         <BsTwitterX   className='icons twit'/>
-                        <FaInstagram onClick={()=>{window.open("https://github.com/Fabricejor")}}  className='icons insta'/>
+                        <FaInstagram onClick={()=>{window.open("https://www.instagram.com/jordan_ramos_disciple_of_god/")}}  className='icons insta'/>
                         <FaGithub  onClick={()=>{window.open("https://github.com/Fabricejor")}} className='icons git'/>
                     </div>
                 </div>

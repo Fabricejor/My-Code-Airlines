@@ -8,6 +8,7 @@ import SignUp from "../Components/Connection/SignUp";
 import Flights from "../Pages/Flights";
 import Profil from "../Pages/Profil";
 import EditProfil from "../Pages/EditProfil";
+import Eror404 from "../Pages/Eror404";
 // import Test from "../Pages/Test";
 
 const token = localStorage.getItem("token");
@@ -16,6 +17,7 @@ const router = createBrowserRouter([
     {path: "/Signup" , element: <SignUp/>} ,
     {path: "/" , element: <Home/>},
     {path: "/contact" , element: <Contact/>},
+    {path: "*" , element: <Eror404/>},
 
     {
         path: "/flights", element:
