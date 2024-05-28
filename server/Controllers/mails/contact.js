@@ -31,13 +31,12 @@ module.exports.sendmail = async (req, res) => {
             html: `<p><strong>Nom:</strong> ${nom}</p>
             <p><strong>Email:</strong> ${email}</p>
             <p><strong>Numéro:</strong> ${numero}</p>
-            <p><strong>Message:</strong> ${message}</p>
-            <img src=""`,
+            <p><strong>Message:</strong> ${message}</p>`,
 
             attachments: [ // les pieces jointes
                 {
                     filename: 'mycode.jpg',
-                    path: path.join(__dirname, 'mycode.jpg'),
+                    path: path.join(__dirname, 'BookingFLyer.png'),
                     contentType: 'image/jpg',
                 }]
         }
