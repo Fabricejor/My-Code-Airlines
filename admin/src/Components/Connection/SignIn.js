@@ -45,11 +45,11 @@ const SignIn = () => {
 
                 if (user) {
                     localStorage.setItem("token", response.token);
-                    // localStorage.setItem("user", JSON.stringify(user));
+                    localStorage.setItem("user", JSON.stringify(user));
                     // Stocker l'heure d'expiration du token
-                    // const expiresIn = 86400; // 1 jour en secondes
-                    // const expirationTime = new Date().getTime() + expiresIn * 1000;
-                    // localStorage.setItem("tokenExpiration", expirationTime);
+                    const expiresIn = 86400; // 1 jour en secondes
+                    const expirationTime = new Date().getTime() + expiresIn * 1000;
+                    localStorage.setItem("tokenExpiration", expirationTime);
                     window.location = "/home";
                 }
             } else {
@@ -81,7 +81,7 @@ const SignIn = () => {
                         <label htmlFor='mdp'>Mot de passe:</label>
                         <input
                             className='input'
-                            type='mdp'
+                            type='password'
                             name='mdp'
                             id='mdp'
                             value={data.mdp}
