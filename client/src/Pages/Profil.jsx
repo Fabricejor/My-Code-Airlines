@@ -12,6 +12,7 @@ import axios from 'axios';
 import { MdOutlinePhoneIphone } from "react-icons/md";
 import { IoIosMailUnread } from "react-icons/io";
 import { FaEdit } from "react-icons/fa";
+import { Zoom } from "react-awesome-reveal";
 
 export default function Profil() {
     const [tickets, setTickets] = useState([]);
@@ -54,6 +55,7 @@ export default function Profil() {
         <section className='profil-info' >
             <h2 className='profil-title'>Profil info:</h2>
             <hr/>
+            <Zoom>
             <div className='profil-card'>
                 <Link title='Edit infos?' to={`/profil/${user._id}`} className='personal-info'>
                     
@@ -70,7 +72,7 @@ export default function Profil() {
                     <img src="/fidelityCard.png" alt="credit card" />
                     <p>Num build: <strong>{user.numPassport}</strong> </p>
                 </div>
-            </div>
+            </div></Zoom>
         </section>
         <section className='reservations-info'>
         <h2 className='profil-title'>Bookings flights:</h2>

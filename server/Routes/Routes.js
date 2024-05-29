@@ -45,5 +45,6 @@ router.post("/subcribers",NewsLetter.Subscribe)
 router.get("/getSubcribers",NewsLetter.getAllsubscribers)
 //mails gestions
 router.post('/sendmail', contact.sendmail);
+router.post('/Bookmails',contact.Bookmails);
 
 module.exports = router;

@@ -6,7 +6,8 @@ import banner from "../Assets/video/flight.mp4";
 import Preloader from "../Components/Preloader/Preloader";
 
 import axios from 'axios';
-
+//animation yi
+import { Slide } from "react-awesome-reveal";
 import { GoBookmark } from "react-icons/go";
 import { IoIosArrowDown } from "react-icons/io";
 
@@ -96,6 +97,14 @@ const handleFinishBooking = async (e) => {
     try {
         const response = await axios.post('http://localhost:5000/api/addManyTickets',  tickets );
         console.log("Tickets ajoutés avec succès :", response.data);
+         // Envoyer les données de réservation à l'API Bookmails
+         const emailData = {
+          email: userMail,
+          reservations: tickets
+      };
+      const emailResponse = await axios.post('http://localhost:5000/api/Bookmails', emailData);
+      console.log("Email envoyé avec succès :", emailResponse.data);
+
         window.alert('Réservation réussie');
         window.location.href = '/profil';
     } catch (error) {
@@ -177,6 +186,7 @@ const handleFinishBooking = async (e) => {
       <section className="passager-container">
         {Array.from({ length:  Math.min(num, 3)  }).map((_, index) => (
           <div className="form-passager"key={index} >
+            <Slide>
             <div className="form-item">
               <label>Passager {index + 1}</label>
               <input type="text" placeholder={`Passenger ${index + 1} name`} maxLength={100}  value={passengers[index]?.name || ""}  onChange={(e) => handlePassengerChange(index, 'name', e.target.value)} required />
@@ -188,7 +198,7 @@ const handleFinishBooking = async (e) => {
             <div  className="form-item">
       <label>age {index + 1}</label>
       <input type="Number" min={5} max={90} placeholder={`Passenger ${index + 1} year old`} value={passengers[index]?.age || ""}  onChange={(e) => handlePassengerChange(index, 'age', e.target.value)}required />
-    </div>
+    </div></Slide>
     
           </div>
         ))}

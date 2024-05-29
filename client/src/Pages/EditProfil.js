@@ -4,7 +4,7 @@ import Footer from '../Layouts/Footer';
 import "../Assets/Styles/editprofil.css";
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-
+import { Slide } from "react-awesome-reveal";
 export default function EditProfil() {
   const navigate = useNavigate();
   const userString = localStorage.getItem("user");
@@ -61,6 +61,7 @@ export default function EditProfil() {
         <h2 className='profil-title'>Edit profil:</h2>
         <hr />
         <form onSubmit={handleSubmit}>
+          <Slide style={{width:"100%"}}>
           <div className='profil-form-edit'>
             <label>Nom</label>
             <input
@@ -71,6 +72,8 @@ export default function EditProfil() {
               required
             />
           </div>
+          </Slide>
+          <Slide style={{width:"100%"}}>
           <div className='profil-form-edit'>
             <label>Email</label>
             <input
@@ -82,6 +85,8 @@ export default function EditProfil() {
               required
             />
           </div>
+          </Slide>
+          <Slide style={{width:"100%"}}>
           <div className='profil-form-edit'>
             <label>Tel (+221)</label>
             <input
@@ -93,6 +98,8 @@ export default function EditProfil() {
 
             />
           </div>
+          </Slide>
+          <Slide style={{width:"100%"}}>
           <div className='profil-form-edit'>
             <label>Passport ID</label>
             <input
@@ -104,6 +111,8 @@ export default function EditProfil() {
               required
             />
           </div>
+          </Slide>
+          <Slide style={{width:"100%"}}>
           <div className='profil-form-edit'>
             <label>Age</label>
             <input
@@ -114,11 +123,15 @@ export default function EditProfil() {
               onChange={(e) => setAge(e.target.value)}
               required
             />
-          </div>
+          </div>        
+          </Slide>
+          <Slide style={{width:"100%"}}>
           <div className='form-btn-edit'>
             <Link className='link-to-profil' to="/profil">Cancel</Link>
             <button type="submit">Submit</button>
           </div>
+          </Slide>
+
         </form>
       </section>
       <Footer />

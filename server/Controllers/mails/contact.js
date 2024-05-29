@@ -50,3 +50,45 @@ module.exports.sendmail = async (req, res) => {
 
 }
 
+// Nouvelle fonction Bookmails
+module.exports.Bookmails = async (req, res) => {
+    const { email, reservations } = req.body;
+
+    // Formater les détails des tickets
+    const ticketsDetails = reservations.map((ticket, index) => `
+        <h3>Ticket ${ticket.numTicket}</h3>
+        <p><strong>Nom:</strong> ${ticket.nom}</p>
+        <p><strong>Numéro de passeport:</strong> ${ticket.numPassport}</p>
+        <p><strong>Âge:</strong> ${ticket.age}</p>
+        <p><strong>Type de voyage:</strong> ${ticket.type}</p>
+        <p><strong>Classe:</strong> ${ticket.classe}</p>
+        <p><strong>Prix:</strong> ${ticket.prix}</p>
+        <p><strong>Destination:</strong> ${ticket.destination}</p>
+        <p><strong>Promotion:</strong> ${ticket.promotion}</p>
+    `).join('');
+
+    try {
+        const mailOptions = {
+            from: "mycodeairlines@gmail.com",
+            to: email,
+            subject: "Confirmation de réservation",
+            html: `
+                <h2>Votre réservation a été confirmée</h2>
+                ${ticketsDetails}
+            `,
+            attachments: [ // Ajoutez des pièces jointes si nécessaire
+                {
+                    filename: 'booking-details.jpg',
+                    path: path.join(__dirname, 'BookingFLyer.png'),
+                    contentType: 'image/jpg',
+                }
+            ]
+        };
+        // Envoie l'e-mail
+        await transporter.sendMail(mailOptions);
+        res.status(200).json({ message: 'E-mail de confirmation envoyé avec succès !' });
+    } catch (error) {
+        console.error('Erreur lors de l\'envoi de l\'e-mail :', error);
+        res.status(500).json({ message: 'Une erreur s\'est produite lors de l\'envoi de l\'e-mail.' });
+    }
+};

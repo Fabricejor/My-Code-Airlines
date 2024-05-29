@@ -108,8 +108,32 @@
 .table-container{
     width: 100%;
     margin-top: 2%;
-    overflow-x:auto;
+    margin-bottom: 2%;
+    display: inline-block;
+  height: 20em;
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    background-color: transparent;
+    width: 0px;
+    
+  }
 }
+.table-container:hover {
+    &::-webkit-scrollbar {
+      width: 5px;
+    }
+    &::-webkit-scrollbar-track{
+        background-color: #9ee5ff;
+    }
+    &::-webkit-scrollbar-thumb{
+        background-color: #008abc;
+        border-radius: 20px;
+    }
+}
+.table-container  table thead  {
+    position: sticky;
+    top: 0;
+  }
 .table-container table{
     width: 90%;
     border: 1px solid #00a9e6;
@@ -130,6 +154,6 @@ th, td {
     background-color: #e2f6fe;
 }
 .table-container table tbody  tr:nth-child(odd){
-    background-color: #cdffea;
+    background-color: #80ddff;
 
 }
