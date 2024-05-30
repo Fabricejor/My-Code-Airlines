@@ -1,0 +1,47 @@
+.home-content {
+    /* background-color: red; */
+    height: 95.9vh;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Deux colonnes de largeur égale */
+    gap: 10px;
+    box-sizing: border-box; /* Assurez-vous que le padding et la bordure sont inclus dans la largeur et la hauteur */
+    overflow: auto; /* Ajoute des barres de défilement si nécessaire */
+    padding: 10px;
+}
+
+.home-content .icon-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+    text-align: center;
+    padding: 10px;
+    /* border: 1px solid #ccc; */
+    border-radius: 8px;
+    background-color: transparent;
+    box-sizing: border-box; /* Assurez-vous que le padding et la bordure sont inclus dans la largeur et la hauteur */
+    transition: 1s ease-in-out;
+}
+.home-content .icon-content:hover{
+    border: 2px solid #135D66;
+    
+}
+.home-content .icon-content img {
+    width: 50%;
+    height: auto; /* Garde les proportions de l'image */
+    
+    margin-bottom: 10px;
+    object-fit: contain; /* S'assure que l'image est entièrement contenue dans le conteneur */
+    border-radius: 20px;
+    transition: 1s ease-in-out;
+}
+.home-content .icon-content img:hover{
+    transform: scale(0.8);
+}
+.icon-content h3 {
+    font-size: 1.2em;
+    margin: 0;
+    font-weight: bold;
+}

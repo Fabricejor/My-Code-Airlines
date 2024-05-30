@@ -4,3 +4,13 @@
 #root{
     display: flex;
 }
+.componant{
+    width: 100%;
+    padding-left: 1.25rem;
+}
+.flex{
+    width: 100%;
+}
+.sidebar{
+    position: sticky;
+}

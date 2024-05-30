@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "../Assets/Styles/sidebar.css";
-import { FaArrowsAltH, FaSearch, FaPowerOff, FaRegBookmark } from "react-icons/fa";
+import {  FaSearch, FaPowerOff, FaRegBookmark } from "react-icons/fa";
+import { IoIosArrowDroprightCircle } from "react-icons/io";
 import { MdConnectingAirports, } from "react-icons/md";
 import { BiSolidDashboard } from "react-icons/bi";
 import { IoIosArrowDropdown } from "react-icons/io";
@@ -83,8 +84,8 @@ export default function Sidebar() {
   return (
     <>
       <div className="flex">
-        <div className={`bg-purple-dark h-screen p-5 pt-8 ${open ? "w-72" : "w-20"} duration-700 ease-out  relative`}>
-          <FaArrowsAltH
+        <div className={`sidebar bg-purple-dark h-screen p-5 pt-8 ${open ? "w-72" : "w-20"} duration-700 ease-out  relative`}>
+          <IoIosArrowDroprightCircle
             className={`bg-white text-purple-dark text-3xl 
                                       rounded-full absolute 
                                       -right-3 top-9 border-purple-dark
@@ -136,7 +137,7 @@ export default function Sidebar() {
             })}
           </ul>
         </div>
-        <div className="componant p-7">
+        <div className="componant">
           {
             contentRender()
           }
