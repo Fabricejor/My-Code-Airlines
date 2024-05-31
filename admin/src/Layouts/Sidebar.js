@@ -34,25 +34,25 @@ export default function Sidebar() {
     switch (location.pathname) {
       case "/home/clients":
           return (<UserMenu/>);
-        break;
+        // break;
         case "/home/Vols":
           return (<FlightMenu/>);
-        break;  
+        // break;  
         case "/home/Voyagers":
           return (<PassagersMenu/>);
-        break;   
+        // break;   
         case "/home/Reservation":
           return (<BookingMenu/>);
-        break;
+        // break;
         case "/home/Graphiques":
           return (<Graph1/>);
-        break; 
+        // break; 
         case "/home/Admin":
           return (<Admin/>);
-        break;
+        // break;
         case "/home":
           return (<Home/>);
-        break; 
+        // break; 
       default:
               <Home/>
         break;

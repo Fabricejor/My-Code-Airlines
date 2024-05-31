@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect ,useRef } from "react";
+import { useState, useEffect  } from "react";
 import "../../Assets/Styles/flight.css";
 import { TbEdit } from "react-icons/tb";
 import { FaTrash } from "react-icons/fa";
@@ -11,7 +11,7 @@ import axios from "axios"
 export default function FlightMenu() {
   const [flights, setFlights] = useState([]);
   const [view, setView] = useState("default"); // 'default', 'search', 'create'
-  const [selectedOption, setSelectedOption] = useState('');
+  // const [selectedOption, setSelectedOption] = useState('');
   const [destinations] = useState([
     "Kaboul - Afghanistan",
     "Tirana - Albanie",
@@ -251,9 +251,9 @@ export default function FlightMenu() {
   
   //! ENVOIE DE CREATE CONTENT POUR CREER DES VOLS
   
-  const handleSelectChange = (event) => {
-    setSelectedOption(event.target.value);
-  };
+  // const handleSelectChange = (event) => {
+  //   setSelectedOption(event.target.value);
+  // };
 
   const generateRandomNumber = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1)) + min;

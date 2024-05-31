@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect ,useRef } from "react";
+import { useState, useEffect  } from "react";
 import "../../Assets/Styles/flight.css";
 import { TbEdit } from "react-icons/tb";
 import { FaTrash } from "react-icons/fa";
@@ -12,7 +12,7 @@ import { Slide } from "react-awesome-reveal";
 export default function UserMenu() {
   const [flights, setFlights] = useState([]);
   const [view, setView] = useState("default"); // 'default', 'search', 'create'
-  const [selectedOption, setSelectedOption] = useState('');
+  // const [selectedOption, setSelectedOption] = useState('');
   const [destinations] = useState([
     "Kaboul - Afghanistan",
     "Tirana - Albanie",
@@ -223,13 +223,13 @@ export default function UserMenu() {
   const handleCancelClick = () => {
     setView("default");
   };
-  const formatDate = (dateString) => {
-    const date = new Date(dateString);
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, "0");
-    const day = String(date.getDate()).padStart(2, "0");
-    return `${year}-${month}-${day}`;
-  };
+  // const formatDate = (dateString) => {
+  //   const date = new Date(dateString);
+  //   const year = date.getFullYear();
+  //   const month = String(date.getMonth() + 1).padStart(2, "0");
+  //   const day = String(date.getDate()).padStart(2, "0");
+  //   return `${year}-${month}-${day}`;
+  // };
   useEffect(() => {
     const fetchFlights = async () => {
       try {
@@ -252,9 +252,9 @@ export default function UserMenu() {
   
   //! ENVOIE DE CREATE CONTENT POUR CREER DES VOLS
   
-  const handleSelectChange = (event) => {
-    setSelectedOption(event.target.value);
-  };
+  // const handleSelectChange = (event) => {
+  //   setSelectedOption(event.target.value);
+  // };
 
   const generateRandomNumber = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1)) + min;
