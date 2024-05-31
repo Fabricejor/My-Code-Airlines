@@ -150,7 +150,7 @@ th, td {
 .table-container table thead  {
     background-color: #00a9e6;
 }
-.table-container table tbody tr:nth-child(odd){
+.table-container table tbody tr:nth-child(even){
     background-color: #e2f6fe;
 }
 .table-container table tbody  tr:nth-child(odd){

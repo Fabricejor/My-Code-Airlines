@@ -1,0 +1,170 @@
+.flight-content{
+        background-color: #e8ecf1;
+        height: 95.9vh;
+        width: 100%;
+        box-sizing: border-box; /* Assurez-vous que le padding et la bordure sont inclus dans la largeur et la hauteur */
+        /* overflow: auto; */
+        transition: 1s ease-in-out;
+        overflow: auto;
+  &::-webkit-scrollbar {
+    background-color: transparent;
+    width: 0px;
+    
+  } /* Ajoute des barres de défilement si nécessaire */
+}
+.flight-content:hover{
+    &::-webkit-scrollbar {
+        width: 5px;
+      }
+      &::-webkit-scrollbar-track{
+          background-color: #9ee5ff;
+      }
+      &::-webkit-scrollbar-thumb{
+          background-color: #008abc;
+          border-radius: 20px;
+      }
+}
+.functions-content{
+    margin-top: 2%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    /* background-color: blue; */
+    height: auto;
+    /* margin-bottom:-10px; */
+    .icon{
+        background-color: #003C43;
+        font-weight: 500;
+        color: white;
+        width: 100px;
+        height: 90%;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: 1s ease-in-out;
+    }
+    .icon:hover{
+        background-color: #80ffca;
+        color: #000;
+    }
+}
+.table-flight{
+    border: 4px solid #003C43;
+    width: 100%;
+    /* overflow: scroll; */
+    border-spacing: 0;
+    border-collapse: collapse;
+    margin-top: 0;
+    
+    /* vertical-align: baseline; */
+}
+.table-flight thead{
+    background-color: #003C43;
+    /* outline: #003C43 3px; */
+    position: sticky;
+    top: 0;
+    height: 30px;
+}
+.table-flight thead tr .date{
+    /* width: 200px; */
+    background-color: #9ee5ff;
+}
+.table-flight thead tr th{
+        text-align: center;
+        padding: 8px;
+        color: white;
+        outline:1px solid #003C43 ;
+
+}
+
+.table-flight  tbody tr:nth-child(even){
+    background-color: #cdffea;
+}
+.table-flight  tbody  tr:nth-child(odd){
+    background-color: #80ffca;
+}
+.table-flight tbody tr td{
+    text-align: center;
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    text-wrap:nowrap;
+    padding:8px 0px 8px 0px; 
+}
+.table-flight tbody tr td{
+    transition: 1s ease-in-out;
+}
+.table-flight tbody tr td:hover {
+    transform: scale(1.05);
+    background-color: #135D66;
+    color: lightgreen;
+    border-radius: 12px;
+}
+.create-content{
+    width: 100%;
+    overflow-x: scroll;
+    transition: 1s ease-in-out;
+    /* background-color: #003C43; */
+}
+.create-content form{
+    display: flex;
+    justify-content:baseline;
+    align-items: center;
+    width: 100%;
+    flex-wrap: wrap;
+  gap: 16px; /* Espace entre les éléments */
+}
+.create-content form select{
+    width:190px;
+    text-align: center;
+    
+}
+
+.form-group {
+    display: flex;
+    flex: 1 1 calc(50% - 8px); /* Occupe la moitié de la largeur avec un espace entre les groupes */
+    gap: 16px; /* Espace entre les éléments dans chaque groupe */
+  }
+  .form-group > * {
+    flex: 1;
+  }
+  .form-group input,.form-group select, .search-content input{
+    border: 2px solid #003C43;
+    /* background-color: #003C43; */
+    border-radius: 8px;
+    font-weight: 500;
+    transition: 1s;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .search-content input:focus{
+    border: 2px solid #80ffca;
+    outline: none;
+    transform: scale(0.9);
+  }
+  .btn-submit ,.cancel-btn{
+    flex-basis: 100%; /* Le bouton prend toute la largeur */
+    margin-top: 16px; /* Espace au-dessus du bouton */
+    transition: 1s ease-in;
+    background-color: #003C43;
+    font-weight: 500;
+    color: white;
+    border-radius: 8px;
+  }
+  .btn-submit:hover {
+    background-color: #80ffca;
+    flex-basis: 50%;
+    color: #000;
+    margin-left: 25%;
+    outline: 2px solid#003C43;
+  }
+  .cancel-btn{
+    padding: 8px;
+  }
+  .cancel-btn:hover{
+    background-color: #80ffca;
+    color: #000;
+    outline: 2px solid#003C43;
+  }

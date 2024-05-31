@@ -4,7 +4,7 @@ const express = require('express');
 //tous les vols
 module.exports.getFlight = async (req, res, next) => {
     try {
-        const flight = await Flight.find();
+        const flight = await Flight.find().sort({ createdAt: -1 });
         res.status(200).json(flight);//afficher sous format json le resultat
        } catch (error) {
         res.status(500).json({message: error.message })

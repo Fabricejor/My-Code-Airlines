@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import '../Assets/Styles/home.css'
+import { Zoom } from "react-awesome-reveal";
 // import Sidebar from '../Layouts/Sidebar'
 
 function Home() {
@@ -14,7 +15,9 @@ function Home() {
     return (
         <>
            <h1>homepage</h1>
+           <Zoom>
            <div className='home-content'>
+            
                 {tabIcon.map((item, index) => (
                     <Link className='icon-content' key={index} to={`${item.link}`}>
                         <img src={`./${item.icon}`} alt={item.title} />
@@ -22,7 +25,7 @@ function Home() {
                     </Link>
                 ))}
                 
-            </div>
+            </div></Zoom>
         </>
     )
 }

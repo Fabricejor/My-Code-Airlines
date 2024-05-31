@@ -1,16 +1,28 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+body{
+    /* overflo; */
+   
+    &::-webkit-scrollbar{
+        visibility:none;
+        display: none;
+    }
+    -ms-overflow-style: none;
+}
 #root{
     display: flex;
+    /* overflow-y: hidden; */
 }
 .componant{
     width: 100%;
     padding-left: 1.25rem;
+    /* overflow: hidden; */
 }
 .flex{
     width: 100%;
 }
 .sidebar{
     position: sticky;
+    height: 100%;
 }

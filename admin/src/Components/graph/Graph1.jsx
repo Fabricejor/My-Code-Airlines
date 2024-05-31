@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import CanvasJSReact from '@canvasjs/react-charts';
+import { Zoom } from "react-awesome-reveal";
 //var CanvasJSReact = require('@canvasjs/react-charts');
  
 var CanvasJS = CanvasJSReact.CanvasJS;
@@ -59,12 +60,12 @@ class Graph1 extends Component {
 		}
 						
 		return (
-		<div  className="GraphContent">
+		<Zoom  className="GraphContent">
 			<CanvasJSChart  options = {options} 
 				onRef={ref => this.chart = ref}
 			/>
 			{/*You can get reference to the chart instance as shown above using onRef. This allows you to access all chart properties and methods*/}
-		</div>
+		</Zoom>
 		);
 	} 			
 }
