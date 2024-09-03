@@ -9,7 +9,7 @@ import Flights from "../Pages/Flights";
 import Profil from "../Pages/Profil";
 import EditProfil from "../Pages/EditProfil";
 import Eror404 from "../Pages/Eror404";
-// import Test from "../Pages/Test";
+import Test from "../Pages/Test";
 
 const token = localStorage.getItem("token");
 const router = createBrowserRouter([
@@ -41,6 +41,12 @@ const router = createBrowserRouter([
         path: "/profil/:user_id", element:
             <ProtectedRoute isAuthenticated={token}>
                 <EditProfil />
+            </ProtectedRoute>
+    },
+    {
+        path: "/test", element:
+            <ProtectedRoute isAuthenticated={token}>
+                <Test />
             </ProtectedRoute>
     },
 ])

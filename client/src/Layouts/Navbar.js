@@ -53,7 +53,7 @@ export default function Navbar() {
           <li ><Link  className="customLink" to={"/"}>Home</Link></li>
           <li ><Link  className="customLink" to={"/flights"}>Flights</Link></li>
           <li ><Link  className="customLink" to={"/contact"}>Contact Us</Link></li>
-          <li ><Link  className="customLink" onClick={scrollToFooter}>About</Link></li>
+          <li ><Link  className="customLink" to={"/test"} >About</Link></li>
         </ul>
       </div>
       <div className='connection'>

@@ -1,19 +1,20 @@
-import React, { useState } from 'react';
+import React from "react";
 
-const Test = () => {
-  const [destinations] = useState(["Dakar -Senegal", "Paris-France", "New York - Etat Unis"]);
-
+export default function Test() {
   return (
-    <div className="form-item">
-      <label>From</label>
-      <input list="destinations" type="text" placeholder="Airport start" name="airport_start"/>
-      <datalist id="destinations">
-        {destinations.map((destination, index) => 
-          <option key={index} value={destination} />
-        )}
-      </datalist>
-    </div>
+    <>
+      <div className="sketchfab-embed-wrapper">
+        <iframe
+          title="Simple Black Hole"
+          frameBorder="0"
+          allowFullScreen
+          mozallowfullscreen="true"
+          webkitallowfullscreen="true"
+          allow="autoplay;"
+          src="https://sketchfab.com/models/23f51e3d43f54dfe9f4ff756bc734387/embed?autospin=1&autostart=1&camera=0&preload=1&ui_controls=0"
+        >
+        </iframe>
+      </div>
+    </>
   );
 }
-
-export default Test;
